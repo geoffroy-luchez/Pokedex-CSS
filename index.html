@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+        <title>Pokédex</title>
+    </head>
+    <body>
+        <div class="ligne">
+            <p class="radio-group">
+                <label>
+                    <input type="radio" name="rotate-cube-side" value="front" checked /> front
+                </label>
+                <label>
+                    <input type="radio" name="rotate-cube-side" value="right" /> right
+                </label>
+                <label>
+                    <input type="radio" name="rotate-cube-side" value="back" /> back
+                </label>
+                <label>
+                    <input type="radio" name="rotate-cube-side" value="left" /> left
+                </label>
+                <label>
+                    <input type="radio" name="rotate-cube-side" value="top" /> top
+                </label>
+                <label>
+                    <input type="radio" name="rotate-cube-side" value="bottom" /> bottom
+                </label>
+            </p>
+        </div>
+
+        <div class="ligne">
+            <div class="scene">
+                <div class="pokedex">
+                    <!-- Fond partie principale -->
+                    <div class="surface-fond__face surface-fond__face--front">
+                        <div class="ecran">
+                            <iframe style="margin-top:10px; margin-left:15px" width="200" src="https://www.youtube.com/embed/fpRAU_2rNYw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe style="margin-top:10px; margin-left:15px" width="200" src="https://www.youtube.com/embed/fpRAU_2rNYw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe style="margin-top:10px; margin-left:15px" width="200" src="https://www.youtube.com/embed/fpRAU_2rNYw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="surface-fond__face surface-fond__face--back"></div>
+                    <div class="surface-fond__face surface-fond__face--right"></div>
+                    <div class="surface-fond__face surface-fond__face--left"></div>
+                    <div class="surface-fond__face surface-fond__face--top"></div>
+                    <div class="surface-fond__face surface-fond__face--bottom"></div>
+                    <!-- Boitier supérieur -->
+                    <div class="boitier-superieur__face boitier-superieur__face--front"></div>
+                    <div class="boitier-superieur__face boitier-superieur__face--left"></div>
+                    <div class="boitier-superieur__face boitier-superieur__face--right"></div>
+                    <div class="boitier-superieur__face boitier-superieur__face--back"></div>
+                    <div class="boitier-superieur__face boitier-superieur__face--bottom-right"></div>
+                    <div class="boitier-superieur__face boitier-superieur__face--bottom-center"></div>
+                    <div class="boitier-superieur__face boitier-superieur__face--bottom-left"></div>
+
+                    <!-- Ensemble chanière & partie secondaire -->
+                    <div class="partie-mobile">
+                        <!-- Charnière -->
+                        <div class='charniere__face charniere__face--top'></div>
+                        <div class='charniere__face charniere__face--bottom'></div>
+                        <div class="charniere__face charniere__face--front"></div>
+                        <div class="charniere__face charniere__face--front-right"></div>
+                        <div class="charniere__face charniere__face--front-left"></div>
+                        <div class="charniere__face charniere__face--left"></div>
+                        <div class="charniere__face charniere__face--right"></div>
+                        <div class="charniere__face charniere__face--back"></div>
+                        <div class="charniere__face charniere__face--back-right"></div>
+                        <div class="charniere__face charniere__face--back-left"></div>
+                        <!-- Partie secondaire -->
+                        <div class='partie-secondaire__face partie-secondaire__face--front'></div>
+                        <div class='partie-secondaire__face partie-secondaire__face--back'></div>
+                        <div class='partie-secondaire__face partie-secondaire__face--right'></div>
+                        <div class='partie-secondaire__face partie-secondaire__face--left'></div>
+                        <div class='partie-secondaire__face partie-secondaire__face--bottom'></div>
+                        <div class='partie-secondaire__face partie-secondaire__face--top-left'></div>
+                        <div class='partie-secondaire__face partie-secondaire__face--top-center'></div>
+                        <div class='partie-secondaire__face partie-secondaire__face--top-right'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </body>
+
+    <script src="script.js"></script>
+    <!-- VueJS version développement -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</html>
