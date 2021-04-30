@@ -1,10 +1,177 @@
 :root {
     --couleur-fond: #CCC;
-    --couleur-principale: #dc0a2d;
+    --couleur-principale:  #dc0a2d;
     --couleur-principale2: #D1092B;
-    --couleur-secondaire: #89061c;
+    --couleur-secondaire:  #89061c;
+    --couleur-gris:        #dedede;
     --transparent: rgba(255, 255, 0, 0.5);
 }
+
+/* SCENE */
+.scene {
+    perspective: 3000px;
+    perspective-origin: 300px 500px;
+    transform: translateY( 0px );
+    position: fixed;
+    top: 50%;
+}
+
+body {
+    font-family: verdana;
+    font-size: 12px;
+    background: var( --couleur-fond );
+}
+.ligne {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.border {
+    border: 1px solid black;
+}
+
+
+/* ELEMENTS EN 3D */
+/* Ensemble du Pokedex */
+.pokedex {
+    transform: rotateX( 60deg ) rotateZ( 70deg ) translateZ(-0px) translateX(50px) translateY(-200px);
+    height: 100%;
+    width: 280px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 2s;
+    /* Center du truc 3D (autour duquel la rotation se fait) */
+    transform-origin: 140px 0px 0px;
+    /* Annimation Rotation */
+    /*animation: tourne 15s linear infinite;*/
+}
+/* Partie ouvrante du Pokedex */
+.partie-mobile {
+    transition: 2s;
+    /* Centre du truc 3D (autour duquel la rotation se fait) */
+    transform-origin: 300px 0px 7px;
+}
+/* Ouverture du Pokédex au survol */
+.pokedex:hover .partie-mobile {
+    transform: rotateY( 150deg );
+}
+.pokedex:hover .charniere__face--back, .pokedex:hover .charniere__face--back-left, .pokedex:hover .charniere__face--back-right .pokedex:hover .charniere__face--left{
+    background-color: var( --couleur-principale2 )
+}
+.pokedex:hover .surface-fond__face--front, .pokedex:hover .partie-secondaire__face--back {
+    background-color: var( --couleur-principale )
+}
+.pokedex:hover {
+    transform: translateY( -200px ) translateZ( 200px ) translateX(-160px) rotateY(20deg) rotateX(10deg);
+}
+.pokedex:hover .surface-fond__face--back{
+    box-shadow: none;
+}
+/* Arrière de la partie principale */
+.surface-fond__face { position: absolute; border: 0px solid black;transition: all 2s ease-out;}
+.surface-fond__face--front  { transform: rotateY(  0deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width: 280px;height: 470px;}
+.surface-fond__face--right  { transform: rotateY( 90deg) translateZ(267.5px); background-color: var( --couleur-secondaire );width:  25px;height: 470px;}
+.surface-fond__face--back   { transform: rotateY(180deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width: 280px;height: 470px;
+    box-shadow: -60px 20px 40px grey;
+}
+.surface-fond__face--left   { transform: rotateY(-90deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width:  25px;height: 470px;}
+.surface-fond__face--bottom { transform: rotateX(-90deg) translateZ(457.5px); background-color: var( --couleur-secondaire );width: 280px;height: 25px;}
+.surface-fond__face--top    { transform: rotateX( 90deg) translateZ(   20px) translateY( 8px); background-color: var( --couleur-secondaire );width: 320px;height: 40px;}
+/* Charnière liant la partie principale et secondaire */
+.charniere__face { position: absolute; border-top: 0px solid black;border-bottom: 0px solid black; transition: all 2s ease-out;}
+.charniere__face--top    { transform: rotateX( 90deg) translateZ( -30px) translateX(280px) translateY(7.57px);background-color: var( --couleur-secondaire );width: 40px; height: 40px;clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);}
+.charniere__face--bottom { transform: rotateX(-90deg) translateZ(450px) translateX(280px) translateY(-7.5px);background-color: var( --couleur-secondaire );width: 40px; height: 40px;clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);}
+.charniere__face--front       { transform: rotateY(   0deg) translateZ(  27.5px) translateX(  292px) translateY(50px); background-color: var( --couleur-principale );width: 16.57px; height: 420px;}
+.charniere__face--front-right { transform: rotateY(  45deg) translateZ( 231.5px) translateX(  201px) translateY(50px); background-color: var( --couleur-principale );width: 16.57px; height: 420px;}
+.charniere__face--front-left  { transform: rotateY( -45deg) translateZ(  -181px) translateX(211.5px) translateY(50px); background-color: var( --couleur-secondaire );width: 16.57px; height: 420px;}
+.charniere__face--right       { transform: rotateY(  90deg) translateZ( 311.3px) translateX(   -8px) translateY(50px); background-color: var( --couleur-principale );width: 16.57px; height: 420px;}
+.charniere__face--left        { transform: rotateY( -90deg) translateZ(  -272px) translateX(    8px) translateY(50px); background-color: var( --couleur-secondaire );width: 16.57px; height: 420px;}
+.charniere__face--back        { transform: rotateY( 180deg) translateZ(  12.5px) translateX( -292px) translateY(50px); background-color: var( --couleur-secondaire );width: 16.57px; height: 420px;}
+.charniere__face--back-right  { transform: rotateY( 130deg) translateZ( 238.1px) translateX( -192px) translateY(50px); background-color: var( --couleur-secondaire );width: 16.57px; height: 420px;}
+.charniere__face--back-left   { transform: rotateY(-133deg) translateZ(-198.9px) translateX( -194px) translateY(50px); background-color: var( --couleur-secondaire );width: 16.57px; height: 420px;}
+/* Bloc supérieur du boitier principal */
+.boitier-superieur__face { position: absolute; border: 0px solid black;transition: all 2s ease-out; }
+.boitier-superieur__face--front { transform: rotateY(  0deg) translateZ(27.5px); background-color: #D1092B ;width: 320px;height: 100px;clip-path: polygon(34% 100%, 50% 50%, 100% 50%, 100% 0, 0 0, 0 100%);}
+.boitier-superieur__face--left  { transform: rotateY(-90deg) translateZ( 7.3px) translateX(  20.4px); background-color: var( --couleur-secondaire );width: 15px;height: 100px;}
+.boitier-superieur__face--right { transform: rotateY( 90deg) translateZ( 300px) translateX(    -7px); background-color: var( --couleur-secondaire );width: 40px;height: 50px;}
+.boitier-superieur__face--back  { transform: rotateY(180deg) translateZ(12.5px) translateX(-279.8px); background-color: var( --couleur-secondaire );width: 40px;height: 50px;}
+.boitier-superieur__face--bottom-right  { transform: rotateX( 90deg) translateZ(  -30px) translateY( 8px) translateX(159px); background-color: var( --couleur-secondaire );width: 161.3px;height: 40px;}
+.boitier-superieur__face--bottom-center { transform: rotateX( 90deg) rotateY(-45deg) translateZ(-117px) translateY(20px) translateX( 21.4px); background-color: var( --couleur-secondaire );width: 72px;height: 15px;}
+.boitier-superieur__face--bottom-left   { transform: rotateX( 90deg) translateZ(-92.5px) translateY(20px) translateX(  0px); background-color: var( --couleur-secondaire );width: 109px;height: 15px;}
+/* Grosse lampe bleue */
+.groupe-3d {
+    position: relative;
+    transform-style: preserve-3d;
+}
+.lampe-bleue__face { position: absolute; border: 0px solid black;transition: all 2s ease-out; }
+.lampe-bleue__face--front { transform: rotateY(  0deg) translateX(25px) translateY(25px) translateZ(15px); background-color: var( --transparent ) ;width: 20px;height: 20px; }
+.lampe-bleue__face--top {}
+.lampe-bleue__face--bottom {}
+.lampe-bleue__face--left {}
+.lampe-bleue__face--right {}
+.lampe-bleue__face--bottom-left {}
+.lampe-bleue__face--bottom-right {}
+.lampe-bleue__face--top-left {}
+.lampe-bleue__face--top-right {}
+/* Partie secondaire */
+.partie-secondaire__face { position: absolute; transition: all 2s ease-out; }
+.partie-secondaire__face--front  { transform: rotateY(  0deg) translateZ( 27.5px) translateY(   52px); background-color: var( --couleur-principale );width: 289px;height: 418px; clip-path: polygon(0 100%, 0 12%, 38% 12%, 55.5% 0, 100% 0, 100% 100%);}
+.partie-secondaire__face--back   { transform: rotateY(  0deg) translateZ( 13.5px) translateY(   52px); background-color: var( --couleur-secondaire );width: 289px;height: 418px; clip-path: polygon(0 100%, 0 12%, 38% 12%, 55.5% 0, 100% 0, 100% 100%);}
+.partie-secondaire__face--right  { transform: rotateY( 90deg) translateZ(  281px) translateX(  -21px) translateY(52px); background-color: var( --couleur-secondaire );width: 14px;height: 418px;}
+.partie-secondaire__face--left   { transform: rotateY(-90deg) translateZ(    7px) translateX(   21px) translateY(102px); background-color: var( --couleur-secondaire );width: 14px;height: 368px;}
+.partie-secondaire__face--bottom { transform: rotateX(-90deg) translateY(-20.5px) translateZ(462.5px); background-color: var( --couleur-secondaire );width: 289px;height: 14px;}
+.partie-secondaire__face--top-right  { transform: rotateX(90deg) translateZ(-45.6px) translateY(20px) translateX(160px); background-color: var( --couleur-secondaire );width: 129px;height: 14px;}
+.partie-secondaire__face--top-left   { transform: rotateX(90deg) translateZ(  -95px) translateY(20px) translateX(  0px); background-color: var( --couleur-secondaire );width: 111px;height: 15px;}
+.partie-secondaire__face--top-center { transform: rotateX(90deg) rotateY(-45deg) translateZ(-120px) translateY(20px) translateX(21.4px); background-color: var( --couleur-secondaire );width: 71px;height: 15px;}
+
+/* ELEMENTS DE DETAIL (Non 3D) */
+/* LEDs du haut du boitier */
+.boitier-superieur__face--front .gris {
+    border-radius: 50%;
+    height: 70px;width: 70px;
+    background-color: var( --couleur-gris );
+    margin-left: 15px;margin-top: 15px;
+    border: 2px solid var( --couleur-secondaire );
+}
+.boitier-superieur__face--front .rouge {
+    border-radius: 50%;
+    height: 10px;width: 10px;
+    background-image: url("images/led_rouge.png");
+    margin-left: 10px;margin-top: 20px;
+    border: 1px solid var( --couleur-secondaire );
+}
+.boitier-superieur__face--front .jaune {
+    border-radius: 50%;
+    height: 10px;width: 10px;
+    background-image: url("images/led_jaune.png");
+    margin-left: 15px;margin-top: 20px;
+    border: 1px solid var( --couleur-secondaire );
+}
+.boitier-superieur__face--front .vert {
+    border-radius: 50%;
+    height: 10px;width: 10px;
+    background-image: url("images/led_verte.png");
+    margin-left: 10px;margin-top: 20px;
+    border: 1px solid var( --couleur-secondaire );
+}
+
+/* Elements sur le clapet fermé */
+.partie-secondaire__face--front .triangle {
+	flex-basis: 100%;
+	clip-path: polygon(0 0, 0 100%, 100% 50%);
+	background-color: #ffc300;
+	width: 24px; height: 44px;
+	margin-top: 200px; margin-left: 10px;
+}
+.partie-secondaire__face--front .relief {
+	width: 150px; height: 10px;
+	margin-top: 120px;
+	border-radius: 7.5px;
+	border: 1px solid var( --couleur-secondaire );
+}
+
+/* Ecran */
 .ecran::before {
     content: " ";
     display: block;
@@ -22,7 +189,6 @@
     /*outline:2rem solid black;*/
     box-shadow: inset 0 0 18rem black, inset 0 0 3rem black;
     filter: grayscale(100%);
-
     overflow: auto;
     height:220px; width:250px;
     margin-top:150px;margin-left:15px;
@@ -47,120 +213,7 @@
     animation: flicker 0.15s infinite;
 }
 
-body {
-    font-family: verdana;
-    font-size: 12px;
-    background: var( --couleur-fond );
-}
-.ligne {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.border {
-    border: 1px solid black;
-}
-.pokedex {
-    transform: rotateX( 60deg ) rotateZ( 70deg ) translateZ(-0px) translateX(50px) translateY(-200px);
-    height: 100%;
-    width: 280px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: 2s;
-    /* Center du truc 3D (autour duquel la rotation se fait) */
-    transform-origin: 140px 0px 0px;
-    /* Annimation Rotation */
-    /*animation: tourne 15s linear infinite;*/
-}
-.partie-mobile {
-    position: relative;
-    transform-style: preserve-3d;
-    transition: 2s;
-    /* Centre du truc 3D (autour duquel la rotation se fait) */
-    transform-origin: 300px 0px 7px;
-}
-
-/* Ouverture du Pokédex au survol */
-.pokedex:hover .partie-mobile {
-    transform: rotateY( 150deg );
-}
-.pokedex:hover .charniere__face--back, .pokedex:hover .charniere__face--back-left, .pokedex:hover .charniere__face--back-right .pokedex:hover .charniere__face--left{
-    background-color: var( --couleur-principale2 )
-}
-.pokedex:hover .surface-fond__face--front, .pokedex:hover .partie-secondaire__face--back {
-    background-color: var( --couleur-principale )
-}
-.pokedex:hover {
-    transform: translateY( -200px ) translateZ( 200px ) translateX(-160px) rotateY(20deg) rotateX(10deg);
-}
-.pokedex:hover .surface-fond__face--back{
-    box-shadow: none;
-}
-
-/* SCENE */
-.scene {
-    perspective: 3000px;
-    perspective-origin: 300px 500px;
-    transform: translateY( 0px );
-    position: fixed;
-    top: 50%;
-}
-
-/* Socle de fond de la partie gauche */
-.surface-fond__face { position: absolute; border: 0px solid black;transition: all 2s ease-out;}
-.surface-fond__face--front  { transform: rotateY(  0deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width: 280px;height: 470px;}
-.surface-fond__face--right  { transform: rotateY( 90deg) translateZ(267.5px); background-color: var( --couleur-secondaire );width:  25px;height: 470px;}
-.surface-fond__face--back   { transform: rotateY(180deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width: 280px;height: 470px;
-    box-shadow: -60px 20px 40px grey;
-}
-.surface-fond__face--left   { transform: rotateY(-90deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width:  25px;height: 470px;}
-.surface-fond__face--bottom { transform: rotateX(-90deg) translateZ(457.5px); background-color: var( --couleur-secondaire );width: 280px;height: 25px;}
-.surface-fond__face--top    { transform: rotateX( 90deg) translateZ(   20px) translateY( 8px); background-color: var( --couleur-secondaire );width: 320px;height: 40px;}
-/* Charnière (clip-patch généré ici : https://bennettfeely.com/clippy/)*/
-.charniere__face { position: absolute; border-top: 0px solid black;border-bottom: 0px solid black; transition: all 2s ease-out;}
-.charniere__face--top    { transform: rotateX( 90deg) translateZ( -30px) translateX(280px) translateY(7.57px);background-color: var( --couleur-secondaire );width: 40px; height: 40px;clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);}
-.charniere__face--bottom { transform: rotateX(-90deg) translateZ(450px) translateX(280px) translateY(-7.5px);background-color: var( --couleur-secondaire );width: 40px; height: 40px;clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);}
-.charniere__face--front       { transform: rotateY(   0deg) translateZ(  27.5px) translateX(  292px) translateY(50px); background-color: var( --couleur-principale );width: 16.57px; height: 420px;}
-.charniere__face--front-right { transform: rotateY(  45deg) translateZ( 231.5px) translateX(  201px) translateY(50px); background-color: var( --couleur-principale );width: 16.57px; height: 420px;}
-.charniere__face--front-left  { transform: rotateY( -45deg) translateZ(  -181px) translateX(211.5px) translateY(50px); background-color: var( --couleur-secondaire );width: 16.57px; height: 420px;}
-.charniere__face--right       { transform: rotateY(  90deg) translateZ( 311.3px) translateX(   -8px) translateY(50px); background-color: var( --couleur-principale );width: 16.57px; height: 420px;}
-.charniere__face--left        { transform: rotateY( -90deg) translateZ(  -272px) translateX(    8px) translateY(50px); background-color: var( --couleur-secondaire );width: 16.57px; height: 420px;}
-.charniere__face--back        { transform: rotateY( 180deg) translateZ(  12.5px) translateX( -292px) translateY(50px); background-color: var( --couleur-secondaire );width: 16.57px; height: 420px;}
-.charniere__face--back-right  { transform: rotateY( 130deg) translateZ( 238.1px) translateX( -192px) translateY(50px); background-color: var( --couleur-secondaire );width: 16.57px; height: 420px;}
-.charniere__face--back-left   { transform: rotateY(-133deg) translateZ(-198.9px) translateX( -194px) translateY(50px); background-color: var( --couleur-secondaire );width: 16.57px; height: 420px;}
-/* Bloc supérieur du boitier */
-.boitier-superieur__face { position: absolute; border: 0px solid black;transition: all 2s ease-out;}
-.boitier-superieur__face--front { transform: rotateY(  0deg) translateZ(27.5px); background-color: #D1092B ;width: 320px;height: 100px;clip-path: polygon(34% 100%, 50% 50%, 100% 50%, 100% 0, 0 0, 0 100%);}
-.boitier-superieur__face--left  { transform: rotateY(-90deg) translateZ( 7.3px) translateX(  20.4px); background-color: var( --couleur-secondaire );width: 15px;height: 100px;}
-.boitier-superieur__face--right { transform: rotateY( 90deg) translateZ( 300px) translateX(    -7px); background-color: var( --couleur-secondaire );width: 40px;height: 50px;}
-.boitier-superieur__face--back  { transform: rotateY(180deg) translateZ(12.5px) translateX(-279.8px); background-color: var( --couleur-secondaire );width: 40px;height: 50px;}
-.boitier-superieur__face--bottom-right  { transform: rotateX( 90deg) translateZ(  -30px) translateY( 8px) translateX(159px); background-color: var( --couleur-secondaire );width: 161.3px;height: 40px;}
-.boitier-superieur__face--bottom-center { transform: rotateX( 90deg) rotateY(-45deg) translateZ(-117px) translateY(20px) translateX( 21.4px); background-color: var( --couleur-secondaire );width: 72px;height: 15px;}
-.boitier-superieur__face--bottom-left   { transform: rotateX( 90deg) translateZ(-92.5px) translateY(20px) translateX(  0px); background-color: var( --couleur-secondaire );width: 109px;height: 15px;}
-/* Partie secondaire */
-.partie-secondaire__face { position: absolute; transition: all 2s ease-out;}
-.partie-secondaire__face--front  { transform: rotateY(  0deg) translateZ( 27.5px) translateY(   52px); background-color: var( --couleur-principale );width: 289px;height: 418px; clip-path: polygon(0 100%, 0 12%, 38% 12%, 55.5% 0, 100% 0, 100% 100%);}
-.partie-secondaire__face--front .triangle {
-	flex-basis: 100%;
-	clip-path: polygon(0 0, 0 100%, 100% 50%);
-	background-color: #ffc300;
-	width: 24px; height: 44px;
-	margin-top: 200px; margin-left: 10px;
-}
-.partie-secondaire__face--front .relief {
-	width: 150px; height: 10px;
-	margin-top: 120px;
-	border-radius: 7.5px;
-	border: 1px solid var( --couleur-secondaire );
-}
-.partie-secondaire__face--back   { transform: rotateY(  0deg) translateZ( 13.5px) translateY(   52px); background-color: var( --couleur-secondaire );width: 289px;height: 418px; clip-path: polygon(0 100%, 0 12%, 38% 12%, 55.5% 0, 100% 0, 100% 100%);}
-.partie-secondaire__face--right  { transform: rotateY( 90deg) translateZ(  281px) translateX(  -21px) translateY(52px); background-color: var( --couleur-secondaire );width: 14px;height: 418px;}
-.partie-secondaire__face--left   { transform: rotateY(-90deg) translateZ(    7px) translateX(   21px) translateY(102px); background-color: var( --couleur-secondaire );width: 14px;height: 368px;}
-.partie-secondaire__face--bottom { transform: rotateX(-90deg) translateY(-20.5px) translateZ(462.5px); background-color: var( --couleur-secondaire );width: 289px;height: 14px;}
-.partie-secondaire__face--top-right  { transform: rotateX(90deg) translateZ(-45.6px) translateY(20px) translateX(160px); background-color: var( --couleur-secondaire );width: 129px;height: 14px;}
-.partie-secondaire__face--top-left   { transform: rotateX(90deg) translateZ(  -95px) translateY(20px) translateX(  0px); background-color: var( --couleur-secondaire );width: 111px;height: 15px;}
-.partie-secondaire__face--top-center { transform: rotateX(90deg) rotateY(-45deg) translateZ(-120px) translateY(20px) translateX(21.4px); background-color: var( --couleur-secondaire );width: 71px;height: 15px;}
+/* ANIMATION */
 @-webkit-keyframes tourne {
 	0% {}
 	100% { -webkit-transform: rotateY( 360deg ); }
@@ -171,7 +224,6 @@ body {
 .pokedex.show-left   { transform: translateZ(0px) rotateY(  90deg); }
 .pokedex.show-top    { transform: translateZ(0px) rotateX( -90deg); }
 .pokedex.show-bottom { transform: translateZ(0px) rotateX(  90deg); }
-
 @keyframes flicker {
     0% {
         opacity: 0.27861;
@@ -237,6 +289,8 @@ body {
         opacity: 0.24387;
     }
 }
+
+/* FLEXBOX */
 .flex-center {
 	display: flex;
 	align-items: center;
@@ -245,4 +299,96 @@ body {
 .flex-col {
 	display: flex;
 	flex-direction: column;
+}
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+
+
+.ball {
+  position: absolute;
+  top:0px;
+  left:0px;
+  width: 98vmin;
+  height: 98vmin;
+  margin: 1vmin;
+  transform-style: preserve-3d;
+  transform: rotateX(-5deg);
+}
+
+@keyframes rot{
+  0% { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg); }
+  100% { transform: rotateY(360deg) rotateX(0deg) rotateZ(0deg); }
+}
+
+.layer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 98vmin;
+  height: 98vmin;
+}
+
+.moving
+{
+  transform-style: preserve-3d;
+  transform-origin: 49vmin 49vmin;
+  animation: rot 10s linear infinite;
+}
+
+.gridplane {
+  width: 97vmin;
+  height: 97vmin;
+  border-radius: 50%;
+  border: 0.5vmin dashed rgb(128, 128, 128);
+}
+
+.xline { transform: translateY(1%) rotateX(90deg); }
+.xline2 { transform: translateY(-1%) rotateX(90deg); }
+.yline { transform: rotateY(90deg); }
+.zline { transform: rotateZ(90deg); }
+
+.laser {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform:  translateX(-27.7128%) translateY(-27.7128%) rotateY(90deg) translateX(-27.7128%) rotateY(-135deg) rotateX(45deg) scale(0.3) translateY(-25%);
+}
+
+.laser2 {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform:  translateX(-27.0128%) translateY(-27.0128%) rotateY(90deg) translateX(-27.0128%) rotateY(-135deg) rotateX(45deg) scale(0.2) translateY(-35%);
+}
+
+.clip
+{
+  border-radius: 50%;
+  overflow:hidden;
+  transform: translateZ(-0vmin);
+}
+
+@keyframes highlightanim {
+  0.00% {left: -150.00%; top: -178.00% }
+  12.50% {left: -117.67%; top: -179.64% }
+  25.00% {left: -97.69%; top: -195.87% }
+  28.75% {left: -95.00%; top: -207.09% }
+  32.50% {left: -97.69%; top: -220.70% }
+  40.00% {left: -117.67%; top: -240.01% }
+  47.50% {left: -150.00%; top: -247.50% }
+  55.00% {left: -182.33%; top: -240.01% }
+  62.50% {left: -202.31%; top: -220.70% }
+  68.75% {left: -205.00%; top: -207.09% }
+  75.00% {left: -202.31%; top: -195.87% }
+  87.50% {left: -182.33%; top: -179.64% }
+  100.00% {left: -150.00%; top: -178.00% }
+}
+
+.shade
+{
+  position: relative;
+  top: -150%;
+  left: -150%;
+  width: 400%;
+  height: 400%;
+  background: radial-gradient(at 50% 50%, white, black, grey, black, black);
+  animation: highlightanim 10s linear infinite;
 }
