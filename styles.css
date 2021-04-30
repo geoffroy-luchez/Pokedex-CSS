@@ -141,6 +141,19 @@ body {
 /* Partie secondaire */
 .partie-secondaire__face { position: absolute; transition: all 2s ease-out;}
 .partie-secondaire__face--front  { transform: rotateY(  0deg) translateZ( 27.5px) translateY(   52px); background-color: var( --couleur-principale );width: 289px;height: 418px; clip-path: polygon(0 100%, 0 12%, 38% 12%, 55.5% 0, 100% 0, 100% 100%);}
+.partie-secondaire__face--front .triangle {
+	flex-basis: 100%;
+	clip-path: polygon(0 0, 0 100%, 100% 50%);
+	background-color: #ffc300;
+	width: 24px; height: 44px;
+	margin-top: 200px; margin-left: 10px;
+}
+.partie-secondaire__face--front .relief {
+	width: 150px; height: 10px;
+	margin-top: 120px;
+	border-radius: 7.5px;
+	border: 1px solid var( --couleur-secondaire );
+}
 .partie-secondaire__face--back   { transform: rotateY(  0deg) translateZ( 13.5px) translateY(   52px); background-color: var( --couleur-secondaire );width: 289px;height: 418px; clip-path: polygon(0 100%, 0 12%, 38% 12%, 55.5% 0, 100% 0, 100% 100%);}
 .partie-secondaire__face--right  { transform: rotateY( 90deg) translateZ(  281px) translateX(  -21px) translateY(52px); background-color: var( --couleur-secondaire );width: 14px;height: 418px;}
 .partie-secondaire__face--left   { transform: rotateY(-90deg) translateZ(    7px) translateX(   21px) translateY(102px); background-color: var( --couleur-secondaire );width: 14px;height: 368px;}
@@ -152,12 +165,12 @@ body {
 	0% {}
 	100% { -webkit-transform: rotateY( 360deg ); }
 }
-.pokedex.show-front  { transform: translateZ(-100px) rotateY(   0deg); }
-.pokedex.show-right  { transform: translateZ(-100px) rotateY( -90deg); }
-.pokedex.show-back   { transform: translateZ(-100px) rotateY(-180deg); }
-.pokedex.show-left   { transform: translateZ(-100px) rotateY(  90deg); }
-.pokedex.show-top    { transform: translateZ(-100px) rotateX( -90deg); }
-.pokedex.show-bottom { transform: translateZ(-100px) rotateX(  90deg); }
+.pokedex.show-front  { transform: translateY(-200px) rotateY(   0deg); }
+.pokedex.show-right  { transform: translateZ(0px) rotateY( -90deg); }
+.pokedex.show-back   { transform: translateZ(0px) rotateY(-180deg); }
+.pokedex.show-left   { transform: translateZ(0px) rotateY(  90deg); }
+.pokedex.show-top    { transform: translateZ(0px) rotateX( -90deg); }
+.pokedex.show-bottom { transform: translateZ(0px) rotateX(  90deg); }
 
 @keyframes flicker {
     0% {
@@ -223,4 +236,13 @@ body {
     100% {
         opacity: 0.24387;
     }
+}
+.flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.flex-col {
+	display: flex;
+	flex-direction: column;
 }
