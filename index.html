@@ -26,6 +26,9 @@
                 <label>
                     <input type="radio" name="rotate-cube-side" value="bottom" /> bottom
                 </label>
+				<label>
+                    <input type="radio" name="rotate-cube-side" value="ouvert" /> Ouvert
+                </label>
             </p>
         </div>
 
@@ -71,7 +74,7 @@
 					<div class="lampe-bleue__face lampe-bleue__face--bottom-right"></div>
 					<div class="lampe-bleue__face lampe-bleue__face--top-left"></div>
 					<div class="lampe-bleue__face lampe-bleue__face--top-right"></div>
-					
+
                     <!-- Ensemble chanière & partie secondaire -->
                     <div class="partie-mobile groupe-3d">
                         <!-- Charnière -->
@@ -87,12 +90,16 @@
                         <div class="charniere__face charniere__face--back-left"></div>
                         <!-- Partie secondaire -->
                         <div class='partie-secondaire__face partie-secondaire__face--front'>
+							<!--  Extérieur -->
 							<div class="triangle"></div>
 							<div class="flex-center flex-col">
 								<div class="relief"></div>
 							</div>
 						</div>
-                        <div class='partie-secondaire__face partie-secondaire__face--back'></div>
+                        <div class='partie-secondaire__face partie-secondaire__face--back'>
+							<!-- Intérieur -->
+							<div class="relief"></div>
+						</div>
                         <div class='partie-secondaire__face partie-secondaire__face--right'></div>
                         <div class='partie-secondaire__face partie-secondaire__face--left'></div>
                         <div class='partie-secondaire__face partie-secondaire__face--bottom'></div>

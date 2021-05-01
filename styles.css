@@ -118,7 +118,7 @@ body {
 /* Partie secondaire */
 .partie-secondaire__face { position: absolute; transition: all 4s ease-out; }
 .partie-secondaire__face--front  { transform: rotateY(  0deg) translateZ( 27.5px) translateY(   52px); background-color: var( --couleur-principale );width: 289px;height: 418px; clip-path: polygon(0 100%, 0 12%, 38% 12%, 55.5% 0, 100% 0, 100% 100%);}
-.partie-secondaire__face--back   { transform: rotateY(  0deg) translateZ( 13.5px) translateY(   52px); background-color: var( --couleur-secondaire );width: 289px;height: 418px; clip-path: polygon(0 100%, 0 12%, 38% 12%, 55.5% 0, 100% 0, 100% 100%);}
+.partie-secondaire__face--back   { transform: rotateY(  180deg) translateZ( -15px) translateY(   52px); background-color: var( --couleur-secondaire );width: 289px;height: 418px; clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 12%, 62% 12%, 44% 0);}
 .partie-secondaire__face--right  { transform: rotateY( 90deg) translateZ(  281px) translateX(  -21px) translateY(52px); background-color: var( --couleur-secondaire );width: 14px;height: 418px;}
 .partie-secondaire__face--left   { transform: rotateY(-90deg) translateZ(    7px) translateX(   21px) translateY(102px); background-color: var( --couleur-secondaire );width: 14px;height: 368px;}
 .partie-secondaire__face--bottom { transform: rotateX(-90deg) translateY(-20.5px) translateZ(462.5px); background-color: var( --couleur-secondaire );width: 289px;height: 14px;}
@@ -172,6 +172,10 @@ body {
 	border: 1px solid var( --couleur-secondaire );
 }
 
+/* Elements sur le clapet ouvert */
+.partie-secondaire__face--back .relief { background-color: black/*var( --couleur-secondaire )*/ ; width: 270px; height: 410px; margin-top:5px; margin-left:15px; clip-path: polygon(1% 99%, 1% 1%, 41% 1%, 57% 29%, 99% 30%, 99% 100%, 100% 100%, 99% 24%, 60% 23%, 46% 0, 0 0, 0 100%, 99% 100%, 99% 99%);}
+
+--.partie-secondaire__face--back .relief div { background-color: black/*var( --couleur-secondaire )*/ ; width: 270px; height: 410px; margin-top:5px; margin-left:15px; clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 12%, 60% 12%, 41% 0);}
 /* Ecran */
 .ecran {
     /*outline:2rem solid black;*/
@@ -187,7 +191,7 @@ body {
     */
 }
 
-/* ANIMATION */
+/* CAMERA */
 @-webkit-keyframes tourne {
 	0% {}
 	100% { -webkit-transform: rotateY( 360deg ); }
@@ -198,6 +202,19 @@ body {
 .pokedex.show-left   { transform: translateZ(0px) rotateY(  90deg); }
 .pokedex.show-top    { transform: translateZ(0px) rotateX( -90deg); }
 .pokedex.show-bottom { transform: translateZ(0px) rotateX(  90deg); }
+.pokedex.show-ouvert .partie-mobile { transform: rotateY( 150deg ); }
+.pokedex.show-ouvert .charniere__face--back, .pokedex:hover .charniere__face--back-left, .pokedex:hover .charniere__face--back-right .pokedex:hover .charniere__face--left{
+    background-color: var( --couleur-principale2 )
+}
+.pokedex.show-ouvert .surface-fond__face--front, .pokedex:hover .partie-secondaire__face--back {
+    background-color: var( --couleur-principale )
+}
+.pokedex.show-ouvert {
+    transform: translateY( -200px ) translateZ( 200px ) translateX(-160px) rotateY(20deg) rotateX(10deg);
+}
+.pokedex.show-ouvert .surface-fond__face--back{
+    box-shadow: none;
+}
 
 /* FLEXBOX */
 .flex-center {
