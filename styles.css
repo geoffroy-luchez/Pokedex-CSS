@@ -4,7 +4,8 @@
     --couleur-principale2: #D1092B;
     --couleur-secondaire:  #89061c;
     --couleur-gris:        #dedede;
-    --transparent: rgba(255, 255, 0, 0.5);
+    --lampe-principale: #28aafd;
+    --lampe-secondaire: #196a9e;
 }
 
 /* SCENE */
@@ -40,7 +41,7 @@ body {
     width: 280px;
     position: relative;
     transform-style: preserve-3d;
-    transition: 2s;
+    transition: 4s;
     /* Center du truc 3D (autour duquel la rotation se fait) */
     transform-origin: 140px 0px 0px;
     /* Annimation Rotation */
@@ -48,7 +49,7 @@ body {
 }
 /* Partie ouvrante du Pokedex */
 .partie-mobile {
-    transition: all 2s ease-out;
+    transition: all 4s ease-out;
     /* Centre du truc 3D (autour duquel la rotation se fait) */
     transform-origin: 300px 0px 7px;
 }
@@ -69,7 +70,7 @@ body {
     box-shadow: none;
 }
 /* Arrière de la partie principale */
-.surface-fond__face { position: absolute; transition: all 2s ease-out; }
+.surface-fond__face { position: absolute; transition: all 4s ease-out; }
 .surface-fond__face--front  { transform: rotateY(  0deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width: 280px;height: 470px;}
 .surface-fond__face--right  { transform: rotateY( 90deg) translateZ(267.5px); background-color: var( --couleur-secondaire );width:  25px;height: 470px;}
 .surface-fond__face--back   { transform: rotateY(180deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width: 280px;height: 470px;
@@ -79,7 +80,7 @@ body {
 .surface-fond__face--bottom { transform: rotateX(-90deg) translateZ(457.5px); background-color: var( --couleur-secondaire );width: 280px;height: 25px;}
 .surface-fond__face--top    { transform: rotateX( 90deg) translateZ(   20px) translateY( 8px); background-color: var( --couleur-secondaire );width: 320px;height: 40px;}
 /* Charnière liant la partie principale et secondaire */
-.charniere__face { position: absolute; transition: all 2s ease-out; }
+.charniere__face { position: absolute; transition: all 4s ease-out; }
 .charniere__face--top    { transform: rotateX( 90deg) translateZ( -30px) translateX(280px) translateY(7.57px);background-color: var( --couleur-secondaire );width: 40px; height: 40px;clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);}
 .charniere__face--bottom { transform: rotateX(-90deg) translateZ(450px) translateX(280px) translateY(-7.5px);background-color: var( --couleur-secondaire );width: 40px; height: 40px;clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);}
 .charniere__face--front       { transform: rotateY(   0deg) translateZ(  27.5px) translateX(  292px) translateY(50px); background-color: var( --couleur-principale );width: 16.57px; height: 420px;}
@@ -99,25 +100,23 @@ body {
 .boitier-superieur__face--bottom-right  { transform: rotateX( 90deg) translateZ(  -30px) translateY( 8px) translateX(159px); background-color: var( --couleur-secondaire );width: 161.3px;height: 40px;}
 .boitier-superieur__face--bottom-center { transform: rotateX( 90deg) rotateY(-45deg) translateZ(-117px) translateY(20px) translateX( 21.4px); background-color: var( --couleur-secondaire );width: 72px;height: 15px;}
 .boitier-superieur__face--bottom-left   { transform: rotateX( 90deg) translateZ(-92.5px) translateY(20px) translateX(  0px); background-color: var( --couleur-secondaire );width: 109px;height: 15px;}
-/* Grosse lampe bleue */
+/* Lampe Bleue */
 .groupe-3d {
     position: relative;
     transform-style: preserve-3d;
 }
 .lampe-bleue__face { position: absolute; }
-.lampe-bleue__face--front  { transform: translateX(42px) translateY(42px) translateZ(30px) rotateY(  0deg); background-color: var( --transparent ) ;width: 20px;height: 20px; }
-.lampe-bleue__face--top    { transform: translateX(42px) translateY(22px) translateZ(30px) rotateY(  0deg); background-color: var( --transparent ) ;width: 20px;height: 21.21px; }
-.lampe-bleue__face--bottom { transform: translateX(42px) translateY(62px) translateZ(30px) rotateY(180deg); background-color: var( --transparent ) ;width: 20px;height: 21.21px; }
-.lampe-bleue__face--left   { transform: translateX(22px) translateY(42px) translateZ(30px) rotateZ(-90deg); background-color: var( --transparent ) ;width: 20px;height: 21.21px; }
-.lampe-bleue__face--right  { transform: translateX(62px) translateY(42px) translateZ(30px) rotateZ( 90deg); background-color: var( --transparent ) ;width: 20px;height: 21.21px; }
-
-.lampe-bleue__face--bottom-left  { transform: rotateY( 0deg) translateX(40px) translateY(40px) translateZ(30px); background-color: var( --transparent ) ;width: 20px;height: 20px; }
-.lampe-bleue__face--bottom-right { transform: rotateY( 0deg) translateX(40px) translateY(40px) translateZ(30px); background-color: var( --transparent ) ;width: 20px;height: 20px; }
-.lampe-bleue__face--top-left     { transform: rotateY( 0deg) translateX(40px) translateY(40px) translateZ(30px); background-color: var( --transparent ) ;width: 20px;height: 20px; }
-.lampe-bleue__face--top-right    { transform: rotateY( 0deg) translateX(40px) translateY(40px) translateZ(30px); background-color: var( --transparent ) ;width: 20px;height: 20px; }
-
+.lampe-bleue__face--front  { transform: translateX(42px) translateY(42px) translateZ(42.5px) rotateY(  0deg); background-color: var(--lampe-principale) ;width: 20px;height: 20px; }
+.lampe-bleue__face--top    { transform: translateX(42px) translateY(24px) translateZ(35px) rotateY( 0deg) rotateX( 45deg) rotateZ( 180deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)) ;width: 20px;height: 21.21px; }
+.lampe-bleue__face--bottom { transform: translateX(42px) translateY(58.9px) translateZ(35px) rotateY(180deg) rotateX( 45deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)) ;width: 20px;height: 21.21px; }
+.lampe-bleue__face--left   { transform: translateX(24.5px) translateY(41.5px) translateZ(35px) rotateZ(-90deg) rotateX( 45deg)rotateZ( 180deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)) ;width: 20px;height: 21.21px; }
+.lampe-bleue__face--right  { transform: translateX(59.5px) translateY(41.5px) translateZ(35px) rotateZ( 90deg) rotateX( 45deg)rotateZ( 180deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)) ;width: 20px;height: 21.21px; }
+.lampe-bleue__face--top-left     { transform: translateX(27.8px) translateY(29.2px) translateZ(35px) rotateX( -90deg) rotateY( 45deg) rotateX( -35deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)); ;width: 21.21px;height: 18.4px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+.lampe-bleue__face--top-right    { transform: translateX(55px) translateY(29.2px) translateZ(35px) rotateX( -90deg) rotateY( -45deg) rotateX( -35deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)); ;width: 21.21px;height: 18.4px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+.lampe-bleue__face--bottom-left  { transform: translateX(27.8px) translateY(56.6px) translateZ(35px) rotateX( -90deg) rotateY( 135deg) rotateX( -35deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)); ;width: 21.21px;height: 18.4px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+.lampe-bleue__face--bottom-right { transform: translateX(55px) translateY(56.6px) translateZ(35px) rotateX( -90deg) rotateY( -135deg) rotateX( -35deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)); ;width: 21.21px;height: 18.4px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
 /* Partie secondaire */
-.partie-secondaire__face { position: absolute; transition: all 2s ease-out; }
+.partie-secondaire__face { position: absolute; transition: all 4s ease-out; }
 .partie-secondaire__face--front  { transform: rotateY(  0deg) translateZ( 27.5px) translateY(   52px); background-color: var( --couleur-principale );width: 289px;height: 418px; clip-path: polygon(0 100%, 0 12%, 38% 12%, 55.5% 0, 100% 0, 100% 100%);}
 .partie-secondaire__face--back   { transform: rotateY(  0deg) translateZ( 13.5px) translateY(   52px); background-color: var( --couleur-secondaire );width: 289px;height: 418px; clip-path: polygon(0 100%, 0 12%, 38% 12%, 55.5% 0, 100% 0, 100% 100%);}
 .partie-secondaire__face--right  { transform: rotateY( 90deg) translateZ(  281px) translateX(  -21px) translateY(52px); background-color: var( --couleur-secondaire );width: 14px;height: 418px;}
@@ -193,7 +192,7 @@ body {
 	0% {}
 	100% { -webkit-transform: rotateY( 360deg ); }
 }
-.pokedex.show-front  { transform: translateY(-200px) rotateY(   0deg); }
+.pokedex.show-front  { transform: translateY(-5px) translateZ(300px) translateX(70px) rotateY(   0deg); }
 .pokedex.show-right  { transform: translateZ(0px) rotateY( -90deg); }
 .pokedex.show-back   { transform: translateZ(0px) rotateY(-180deg); }
 .pokedex.show-left   { transform: translateZ(0px) rotateY(  90deg); }
