@@ -1,7 +1,7 @@
 :root {
     --couleur-fond: #CCC;
     --couleur-principale:  #dc0a2d;
-    --couleur-principale2: #D1092B;
+    --couleur-principale-assombrie: #D1092B;
     --couleur-secondaire:  #89061c;
     --couleur-gris:        #dedede;
     --lampe-principale: #28aafd;
@@ -53,32 +53,16 @@ body {
     /* Centre du truc 3D (autour duquel la rotation se fait) */
     transform-origin: 300px 0px 7px;
 }
-/* Ouverture du Pokédex au survol */
-.pokedex:hover .partie-mobile {
-    transform: rotateY( 150deg );
-}
-.pokedex:hover .charniere__face--back, .pokedex:hover .charniere__face--back-left, .pokedex:hover .charniere__face--back-right .pokedex:hover .charniere__face--left{
-    background-color: var( --couleur-principale2 )
-}
-.pokedex:hover .surface-fond__face--front, .pokedex:hover .partie-secondaire__face--back {
-    background-color: var( --couleur-principale )
-}
-.pokedex:hover {
-    transform: translateY( -200px ) translateZ( 200px ) translateX(-160px) rotateY(20deg) rotateX(10deg);
-}
-.pokedex:hover .surface-fond__face--back{
-    box-shadow: none;
-}
 /* Arrière de la partie principale */
-.surface-fond__face { position: absolute; transition: all 4s ease-out; }
-.surface-fond__face--front  { transform: rotateY(  0deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width: 280px;height: 470px;}
-.surface-fond__face--right  { transform: rotateY( 90deg) translateZ(267.5px); background-color: var( --couleur-secondaire );width:  25px;height: 470px;}
-.surface-fond__face--back   { transform: rotateY(180deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width: 280px;height: 470px;
+.partie-principale__face { position: absolute; transition: all 4s ease-out; }
+.partie-principale__face--front  { transform: rotateY(  0deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width: 280px;height: 470px;}
+.partie-principale__face--right  { transform: rotateY( 90deg) translateZ(267.5px); background-color: var( --couleur-secondaire );width:  25px;height: 470px;}
+.partie-principale__face--back   { transform: rotateY(180deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width: 280px;height: 470px;
     box-shadow: -60px 20px 40px grey;
 }
-.surface-fond__face--left   { transform: rotateY(-90deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width:  25px;height: 470px;}
-.surface-fond__face--bottom { transform: rotateX(-90deg) translateZ(457.5px); background-color: var( --couleur-secondaire );width: 280px;height: 25px;}
-.surface-fond__face--top    { transform: rotateX( 90deg) translateZ(   20px) translateY( 8px); background-color: var( --couleur-secondaire );width: 320px;height: 40px;}
+.partie-principale__face--left   { transform: rotateY(-90deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width:  25px;height: 470px;}
+.partie-principale__face--bottom { transform: rotateX(-90deg) translateZ(457.5px); background-color: var( --couleur-secondaire );width: 280px;height: 25px;}
+.partie-principale__face--top    { transform: rotateX( 90deg) translateZ(   20px) translateY( 8px); background-color: var( --couleur-secondaire );width: 320px;height: 40px;}
 /* Charnière liant la partie principale et secondaire */
 .charniere__face { position: absolute; transition: all 4s ease-out; }
 .charniere__face--top    { transform: rotateX( 90deg) translateZ( -30px) translateX(280px) translateY(7.57px);background-color: var( --couleur-secondaire );width: 40px; height: 40px;clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);}
@@ -172,26 +156,45 @@ body {
 	border: 1px solid var( --couleur-secondaire );
 }
 
-/* Elements sur le clapet ouvert */
-.partie-secondaire__face--back .relief { background-color: black/*var( --couleur-secondaire )*/ ; width: 270px; height: 410px; margin-top:5px; margin-left:15px; clip-path: polygon(1% 99%, 1% 1%, 41% 1%, 57% 29%, 99% 30%, 99% 100%, 100% 100%, 99% 24%, 60% 23%, 46% 0, 0 0, 0 100%, 99% 100%, 99% 99%);}
+/* Elements sur le Pokédex ouvert */
+.partie-secondaire__face--back .relief {
+    background-color: var( --couleur-secondaire );
+    width: 268px; height: 405px;
+    margin-top:5px; margin-left:13px;
+    clip-path: polygon(0 0, 42% 0, 60% 12%, 100% 12%, 100% 100%, 0 100%);
+    padding: 2px;
+}
+.partie-secondaire__face--back .relief div {
+    transition: all 4s ease-out;
+    background-color: var( --couleur-secondaire );
+    width: 268px; height: 405px;
+    clip-path: polygon(0 0, 42% 0, 60% 12%, 100% 12%, 100% 100%, 0 100%);
+}
+.partie-principale__face--front .relief {
+    background-color: var( --couleur-secondaire );
+    width: 265px; height: 405px;
+    margin-top:55px; margin-left:5px;
+    clip-path: polygon(0 100%, 0 12.5%, 39% 12.5%, 58% 0, 100% 0, 100% 100%);
+    padding: 2px;
+}
+.partie-principale__face--front .relief div {
+    transition: all 4s ease-out;
+    background-color: var( --couleur-secondaire );
+    width: 265px; height: 405px;
+    clip-path: polygon(0 100%, 0 12.5%, 39% 12.5%, 58% 0, 100% 0, 100% 100%);
+}
 
---.partie-secondaire__face--back .relief div { background-color: black/*var( --couleur-secondaire )*/ ; width: 270px; height: 410px; margin-top:5px; margin-left:15px; clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 12%, 60% 12%, 41% 0);}
 /* Ecran */
 .ecran {
-    /*outline:2rem solid black;*/
     box-shadow: inset 0 0 18rem black, inset 0 0 3rem black;
     filter: grayscale(100%);
     overflow: auto;
     height:220px; width:250px;
-    margin-top:150px;margin-left:15px;
+    padding-top:90px; margin-left:15px;
     background-color: darkgrey;
-    /*
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    background-size: 100% 2px, 3px 100%;
-    */
 }
 
-/* CAMERA */
+/* ANIMATION */
 @-webkit-keyframes tourne {
 	0% {}
 	100% { -webkit-transform: rotateY( 360deg ); }
@@ -203,18 +206,46 @@ body {
 .pokedex.show-top    { transform: translateZ(0px) rotateX( -90deg); }
 .pokedex.show-bottom { transform: translateZ(0px) rotateX(  90deg); }
 .pokedex.show-ouvert .partie-mobile { transform: rotateY( 150deg ); }
-.pokedex.show-ouvert .charniere__face--back, .pokedex:hover .charniere__face--back-left, .pokedex:hover .charniere__face--back-right .pokedex:hover .charniere__face--left{
-    background-color: var( --couleur-principale2 )
+
+/* Ouverture du Pokédex au survol */
+.pokedex:hover .partie-mobile {
+    /* Rotation de la partie mobile, ouvrant le clapet */
+    transform: rotateY( 150deg );
 }
-.pokedex.show-ouvert .surface-fond__face--front, .pokedex:hover .partie-secondaire__face--back {
+.pokedex:hover .charniere__face--left,
+.pokedex:hover .charniere__face--back,
+.pokedex:hover .charniere__face--back-left,
+.pokedex:hover .charniere__face--back-right,
+.pokedex.show-ouvert .charniere__face--left,
+.pokedex.show-ouvert .charniere__face--back,
+.pokedex.show-ouvert .charniere__face--back-left,
+.pokedex.show-ouvert .charniere__face--back-right {
+    /* Eclaircissement de la charnière, un peu moins que le reste */
+    background-color: var( --couleur-principale-assombrie )
+}
+.pokedex:hover .partie-principale__face--front,
+.pokedex:hover .partie-secondaire__face--back,
+.pokedex:hover .partie-secondaire__face--back .relief div,
+.pokedex:hover .partie-principale__face--front .relief div,
+.pokedex.show-ouvert .partie-principale__face--front,
+.pokedex.show-ouvert .partie-secondaire__face--back,
+.pokedex.show-ouvert .partie-secondaire__face--back .relief div,
+.pokedex.show-ouvert .partie-principale__face--front .relief div
+{
+    /* Eclaircissement des surfaces intérieur principale et secondaire */
     background-color: var( --couleur-principale )
 }
+.pokedex:hover,
 .pokedex.show-ouvert {
+    /* Repositionnement du Pokédexs */
     transform: translateY( -200px ) translateZ( 200px ) translateX(-160px) rotateY(20deg) rotateX(10deg);
 }
-.pokedex.show-ouvert .surface-fond__face--back{
+.pokedex:hover .partie-principale__face--back,
+.pokedex.show-ouvert .partie-principale__face--back{
+    /* Retirer l'ombre */
     box-shadow: none;
 }
+
 
 /* FLEXBOX */
 .flex-center {
