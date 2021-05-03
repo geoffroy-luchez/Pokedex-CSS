@@ -63,11 +63,22 @@
                     <div class="partie-blanche__face partie-blanche__face--bottom-right"></div>
 
 					<!-- Joystick -->
-					<div class="joystick__face joystick__face--front"></div>
-					<div class="joystick__face joystick__face--top"></div>
-                    <div class="joystick__face joystick__face--bottom"></div>
-                    <div class="joystick__face joystick__face--left"></div>
-                    <div class="joystick__face joystick__face--right"></div>
+                    <div class="joystick groupe-3d">
+    					<div class="joystick__face joystick__face--front">
+                            <div class="joystick-cliquable__top"></div>
+                            <div class="joystick-cliquable__bottom"></div>
+                            <div class="joystick-cliquable__left"></div>
+                            <div class="joystick-cliquable__right"></div>
+                        </div>
+    					<div class="joystick__face joystick__face--top"></div>
+                        <div class="joystick__face joystick__face--bottom"></div>
+                        <div class="joystick__face joystick__face--left"></div>
+                        <div class="joystick__face joystick__face--right"></div>
+                        <div class="joystick__face joystick__face--top-bord"></div>
+                        <div class="joystick__face joystick__face--bottom-bord"></div>
+                        <div class="joystick__face joystick__face--left-bord"></div>
+                        <div class="joystick__face joystick__face--right-bord"></div>
+                    </div>
 
                     <!-- Boitier supérieur -->
                     <div class="boitier-superieur__face boitier-superieur__face--front">
@@ -137,6 +148,9 @@
         </div>
 
     </body>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="script.js"></script>
     <!-- VueJS version développement -->

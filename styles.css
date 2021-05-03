@@ -1,15 +1,20 @@
 :root {
+    /* Couleurs principales */
     --couleur-fond: #CCC;
     --couleur-principale:  #dc0a2d;
     --couleur-principale-assombrie: #D1092B;
     --couleur-secondaire:  #89061c;
-
+    /* Couleurs des éléments gris clairs */
     --gris: #dedede;
     --gris-secondaire: #848585;
-
+    /* Couleurs de la grande lampe bleue */
     --lampe-principale: #28aafd;
     --lampe-secondaire: #196a9e;
+    /* Couleurs des boutons */
+    --btn-principale: #00312b;
+    --btn-secondaire: #000910;
 
+    /* Couleurs de test */
     --transparent: rgba(117, 190, 218, 0.5);
 }
 
@@ -41,6 +46,17 @@ body {
     border: 1px solid black;
 }
 
+/* GROUPES D'ELEMENTS 3D */
+.groupe-3d {
+    position: relative;
+    transform-style: preserve-3d;
+}
+/* Partie ouvrante du Pokedex */
+.partie-mobile {
+    transition: all 4s ease-out;
+    /* Centre du truc 3D (autour duquel la rotation se fait) */
+    transform-origin: 300px 0px 7px;
+}
 
 /* ELEMENTS EN 3D */
 /* Ensemble du Pokedex */
@@ -55,12 +71,6 @@ body {
     transform-origin: 140px 0px 0px;
     /* Annimation Rotation */
     /*animation: tourne 15s linear infinite;*/
-}
-/* Partie ouvrante du Pokedex */
-.partie-mobile {
-    transition: all 4s ease-out;
-    /* Centre du truc 3D (autour duquel la rotation se fait) */
-    transform-origin: 300px 0px 7px;
 }
 /* Arrière de la partie principale */
 .partie-principale__face { position: absolute; transition: all 4s ease-out; }
@@ -94,10 +104,6 @@ body {
 .boitier-superieur__face--bottom-center { transform: rotateX( 90deg) rotateY(-45deg) translateZ(-117px) translateY(20px) translateX( 21.4px); background-color: var( --couleur-secondaire );width: 72px;height: 15px;}
 .boitier-superieur__face--bottom-left   { transform: rotateX( 90deg) translateZ(-92.5px) translateY(20px) translateX(  0px); background-color: var( --couleur-secondaire );width: 109px;height: 15px;}
 /* Lampe Bleue */
-.groupe-3d {
-    position: relative;
-    transform-style: preserve-3d;
-}
 .lampe-bleue__face { position: absolute; }
 .lampe-bleue__face--front  { transform: translateX(42px) translateY(42px) translateZ(42.5px) rotateY(  0deg); background-color: var(--lampe-principale) ;width: 20px;height: 20px; }
 .lampe-bleue__face--top    { transform: translateX(42px) translateY(24px) translateZ(35px) rotateY( 0deg) rotateX( 45deg) rotateZ( 180deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)) ;width: 20px;height: 21.21px; }
@@ -128,11 +134,15 @@ body {
 .partie-blanche__face--bottom-right { transform: rotateY(  90deg) translateX( -18px) translateY( 284px) translateZ( 42px) rotateX(48.5deg); background-color: var( --gris-secondaire );width: 10px;height: 42.5px; }
 /* Joystick */
 .joystick__face { position: absolute; transition: all 4s ease-out; }
-.joystick__face--front  { transform: rotateY(  0deg) translateZ( 30px) translateX(185px) translateY(350px); background-color: var( --transparent );width: 75px;height: 75px; clip-path: polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%); }
-.joystick__face--left   { transform: rotateY(  90deg) translateX( -18px) translateY( 350px) translateZ( 205px); background-color: var( --transparent );width: 10px;height: 75px; }
-.joystick__face--right  { transform: rotateY(  90deg) translateX( -18px) translateY( 350px) translateZ(240px); background-color: var( --transparent );width: 10px;height: 75px; }
-.joystick__face--top    { transform: rotateY(  90deg) rotateX(  90deg) translateX( -18px) translateY( 230px) translateZ( -330px); background-color: var( --transparent );width: 10px;height: 75px; }
-.joystick__face--bottom { transform: rotateY(  90deg) rotateX(  90deg) translateX( -18px) translateY( 230px) translateZ( -360px); background-color: var( --transparent );width: 10px;height: 75px; }
+.joystick__face--front  { transform: rotateY( 0deg) translateZ( 23px) translateX(185px) translateY(350px); background-color: var( --btn-principale );width: 75px;height: 75px; clip-path: polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%); }
+.joystick__face--left   { transform: rotateY(90deg) translateX( -18px) translateY( 350px) translateZ( 206.5px); background-color: var( --btn-secondaire );width: 10px;height: 75px; }
+.joystick__face--right  { transform: rotateY(90deg) translateX( -18px) translateY( 350px) translateZ(228px); background-color: var( --btn-secondaire );width: 10px;height: 75px; }
+.joystick__face--top    { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 218px) translateZ( -339px); background-color: var( --btn-secondaire );width: 10px;height: 75px; }
+.joystick__face--bottom { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 218px) translateZ( -361px); background-color: var( --btn-secondaire );width: 10px;height: 75px; }
+.joystick__face--left-bord   { transform: rotateY(90deg) translateX( -18px) translateY( 376.5px) translateZ(180px); background-color: var( --btn-secondaire );width: 10px;height: 22px; }
+.joystick__face--right-bord  { transform: rotateY(90deg) translateX( -18px) translateY( 376.5px) translateZ(255px); background-color: var( --btn-secondaire );width: 10px;height: 22px; }
+.joystick__face--top-bord    { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 217.5px) translateZ( -339px); background-color: var( --btn-secondaire );width: 10px;height: 22px; }
+.joystick__face--bottom-bord { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 217.5px) translateZ( -414px); background-color: var( --btn-secondaire );width: 10px;height: 22px; }
 
 /* ELEMENTS DE DETAIL (Non 3D) */
 /* LEDs du haut du boitier */
@@ -230,6 +240,32 @@ body {
     border-radius: 5px;
 }
 
+/* Joystick */
+.joystick__face--front .joystick-cliquable__top {
+    position: absolute;
+    height:25px; width:25px; margin-top:0px; margin-left:25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.joystick__face--front .joystick-cliquable__bottom {
+    position: absolute;
+    height:25px; width:25px; margin-top:50px; margin-left:25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.joystick__face--front .joystick-cliquable__left {
+    position: absolute;
+    height:25px; width:25px; margin-top:25px; margin-left:0px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.joystick__face--front .joystick-cliquable__right {
+    position: absolute;
+    height:25px; width:25px; margin-top:25px; margin-left:50px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 /* ANIMATION */
 @-webkit-keyframes tourne {
 	0% {}
@@ -248,6 +284,7 @@ body {
     /* Rotation de la partie mobile, ouvrant le clapet */
     transform: rotateY( 150deg );
 }
+/* Ouverture du Pokédex à la checkbox */
 .pokedex:hover .charniere__face--left,
 .pokedex:hover .charniere__face--back,
 .pokedex:hover .charniere__face--back-left,
@@ -280,12 +317,30 @@ body {
 .pokedex:hover,
 .pokedex.show-ouvert {
     /* Repositionnement du Pokédexs */
-    transform: translateY( -200px ) translateZ( 200px ) translateX(-160px) rotateY(30deg) rotateX(10deg);
+    transform: translateY( -200px ) translateZ( 200px ) translateX(-160px) rotateY(30deg) rotateX(10deg) rotateZ(00deg);
 }
 .pokedex:hover .partie-principale__face--back,
 .pokedex.show-ouvert .partie-principale__face--back{
     /* Retirer l'ombre */
     box-shadow: none;
+}
+
+/* Mouvement joystick */
+.joystick.joystick-angle-top {
+    transform-origin: 0px 430px 0px;
+    transform: rotateX( 5deg);
+}
+.joystick.joystick-angle-bottom {
+    transform-origin: 0px 355px 0px;
+    transform: rotateX(-5deg);
+}
+.joystick.joystick-angle-left {
+    transform-origin: 258px 0px 0px;
+    transform: rotateY(-5deg);
+}
+.joystick.joystick-angle-right {
+    transform-origin: 183px 0px 0px;
+    transform: rotateY( 5deg);
 }
 
 /* FLEXBOX */
