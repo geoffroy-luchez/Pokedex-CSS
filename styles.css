@@ -9,10 +9,8 @@
 
     --lampe-principale: #28aafd;
     --lampe-secondaire: #196a9e;
-    /*
-    --gris: rgba(117, 190, 218, 0.5);
-    --gris-secondaire: rgba(117, 190, 218, 0.5);
-*/
+
+    --transparent: rgba(117, 190, 218, 0.5);
 }
 
 /* SCENE */
@@ -122,12 +120,19 @@ body {
 .partie-secondaire__face--top-center { transform: rotateX(90deg) rotateY(-45deg) translateZ(-120px) translateY(20px) translateX(21.4px); background-color: var( --couleur-secondaire );width: 71px;height: 15px;}
 /* Partie blanche contenant l'écran */
 .partie-blanche__face { position: absolute; transition: all 4s ease-out; }
-.partie-blanche__face--front { transform: rotateY(  0deg) translateX( 30px) translateY( 130px) translateZ( 24px); background-color: var( --gris-secondaire );width: 215px;height: 190px; clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%); }
-.partie-blanche__face--left { transform: rotateY(  90deg) translateX( -18px) translateY( 130px) translateZ( 26px); background-color: var( --gris-secondaire );width: 10px;height: 161.5px; }
-.partie-blanche__face--right { transform: rotateY(  90deg) translateX( -18px) translateY( 129.5px) translateZ(240px); background-color: var( --gris-secondaire );width: 10px;height: 190px; }
-.partie-blanche__face--top { transform: rotateY(  90deg) rotateX(  90deg) translateX( -18px) translateY( 133px) translateZ( -22.5px); background-color: var( --gris-secondaire );width: 10px;height: 215px; }
-.partie-blanche__face--bottom { transform: rotateY(  90deg) rotateX(  90deg) translateX( -18px) translateY( 149px) translateZ( -227.8px); background-color: var( --gris-secondaire );width: 10px;height: 183px; }
+.partie-blanche__face--front        { transform: rotateY(  0deg) translateX( 30px) translateY( 130px) translateZ( 24px); background-color: var( --gris-secondaire );width: 215px;height: 190px; clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%); }
+.partie-blanche__face--left         { transform: rotateY(  90deg) translateX( -18px) translateY( 130px) translateZ( 26px); background-color: var( --gris-secondaire );width: 10px;height: 161.5px; }
+.partie-blanche__face--right        { transform: rotateY(  90deg) translateX( -18px) translateY( 129.5px) translateZ(240px); background-color: var( --gris-secondaire );width: 10px;height: 190px; }
+.partie-blanche__face--top          { transform: rotateY(  90deg) rotateX(  90deg) translateX( -18px) translateY( 133px) translateZ( -22.5px); background-color: var( --gris-secondaire );width: 10px;height: 215px; }
+.partie-blanche__face--bottom       { transform: rotateY(  90deg) rotateX(  90deg) translateX( -18px) translateY( 149px) translateZ( -227.8px); background-color: var( --gris-secondaire );width: 10px;height: 183px; }
 .partie-blanche__face--bottom-right { transform: rotateY(  90deg) translateX( -18px) translateY( 284px) translateZ( 42px) rotateX(48.5deg); background-color: var( --gris-secondaire );width: 10px;height: 42.5px; }
+/* Joystick */
+.joystick__face { position: absolute; transition: all 4s ease-out; }
+.joystick__face--front  { transform: rotateY(  0deg) translateZ( 30px) translateX(185px) translateY(350px); background-color: var( --transparent );width: 75px;height: 75px; clip-path: polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%); }
+.joystick__face--left   { transform: rotateY(  90deg) translateX( -18px) translateY( 350px) translateZ( 205px); background-color: var( --transparent );width: 10px;height: 75px; }
+.joystick__face--right  { transform: rotateY(  90deg) translateX( -18px) translateY( 350px) translateZ(240px); background-color: var( --transparent );width: 10px;height: 75px; }
+.joystick__face--top    { transform: rotateY(  90deg) rotateX(  90deg) translateX( -18px) translateY( 230px) translateZ( -330px); background-color: var( --transparent );width: 10px;height: 75px; }
+.joystick__face--bottom { transform: rotateY(  90deg) rotateX(  90deg) translateX( -18px) translateY( 230px) translateZ( -360px); background-color: var( --transparent );width: 10px;height: 75px; }
 
 /* ELEMENTS DE DETAIL (Non 3D) */
 /* LEDs du haut du boitier */
@@ -188,6 +193,7 @@ body {
     background-color: var( --couleur-secondaire );
     width: 268px; height: 405px;
     clip-path: polygon(0 0, 42% 0, 60% 12%, 100% 12%, 100% 100%, 0 100%);
+	display: flex;
 }
 .partie-principale__face--front .relief {
     background-color: var( --couleur-secondaire );
@@ -204,13 +210,22 @@ body {
     display: flex;
 }
 
-/* Ecran */
-.ecran {
-    box-shadow: inset 0 0 18rem black, inset 0 0 3rem black;
+/* Ecrans */
+.partie-blanche__face--front .ecran {
+    box-shadow: inset 0 0 14rem #101010, inset 0 0 2rem #101010;
     filter: grayscale(100%);
     overflow: auto;
     height:130px; width:155px;
     margin-top:30px; margin-left:30px;
+    background-color: darkgrey;
+    border-radius: 5px;
+}
+.partie-secondaire__face--back .ecran {
+    box-shadow: inset 0 0 14rem #101010, inset 0 0 2rem #101010;
+    filter: grayscale(100%);
+    overflow: auto;
+    height:75px; width:220px;
+    margin-top:70px; margin-left:25px;
     background-color: darkgrey;
     border-radius: 5px;
 }
