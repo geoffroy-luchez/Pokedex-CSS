@@ -10,12 +10,15 @@
     /* Couleurs de la grande lampe bleue */
     --lampe-principale: #28aafd;
     --lampe-secondaire: #196a9e;
-    /* Couleurs des boutons */
-    --btn-principale: #00312b;
-    --btn-secondaire: #000910;
+    /* Couleurs des boutons noirs */
+    --btn-n-principale: #00312b;
+    --btn-n-secondaire: #000910;
+    /* Couleurs des boutons noirs */
+    --btn-b-principale: #28aafd;
+    --btn-b-secondaire: #035175;
 
     /* Couleurs de test */
-    --transparent: rgba(117, 190, 218, 0.5);
+    --transp: rgba(117, 190, 218, 0.5);
 }
 
 /* SCENE */
@@ -134,15 +137,39 @@ body {
 .partie-blanche__face--bottom-right { transform: rotateY(  90deg) translateX( -18px) translateY( 284px) translateZ( 42px) rotateX(48.5deg); background-color: var( --gris-secondaire );width: 10px;height: 42.5px; }
 /* Joystick */
 .joystick__face { position: absolute; transition: all 4s ease-out; }
-.joystick__face--front  { transform: rotateY( 0deg) translateZ( 23px) translateX(185px) translateY(350px); background-color: var( --btn-principale );width: 75px;height: 75px; clip-path: polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%); }
-.joystick__face--left   { transform: rotateY(90deg) translateX( -18px) translateY( 350px) translateZ( 206.5px); background-color: var( --btn-secondaire );width: 10px;height: 75px; }
-.joystick__face--right  { transform: rotateY(90deg) translateX( -18px) translateY( 350px) translateZ(228px); background-color: var( --btn-secondaire );width: 10px;height: 75px; }
-.joystick__face--top    { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 218px) translateZ( -339px); background-color: var( --btn-secondaire );width: 10px;height: 75px; }
-.joystick__face--bottom { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 218px) translateZ( -361px); background-color: var( --btn-secondaire );width: 10px;height: 75px; }
-.joystick__face--left-bord   { transform: rotateY(90deg) translateX( -18px) translateY( 376.5px) translateZ(180px); background-color: var( --btn-secondaire );width: 10px;height: 22px; }
-.joystick__face--right-bord  { transform: rotateY(90deg) translateX( -18px) translateY( 376.5px) translateZ(255px); background-color: var( --btn-secondaire );width: 10px;height: 22px; }
-.joystick__face--top-bord    { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 217.5px) translateZ( -339px); background-color: var( --btn-secondaire );width: 10px;height: 22px; }
-.joystick__face--bottom-bord { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 217.5px) translateZ( -414px); background-color: var( --btn-secondaire );width: 10px;height: 22px; }
+.joystick__face--front  { transform: rotateY( 0deg) translateZ( 23px) translateX(185px) translateY(350px); background-color: var( --btn-n-principale );width: 75px;height: 75px; clip-path: polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%); }
+.joystick__face--left   { transform: rotateY(90deg) translateX( -18px) translateY( 350px) translateZ( 206.5px); background-color: var( --btn-n-secondaire );width: 10px;height: 75px; }
+.joystick__face--right  { transform: rotateY(90deg) translateX( -18px) translateY( 350px) translateZ(228px); background-color: var( --btn-n-secondaire );width: 10px;height: 75px; }
+.joystick__face--top    { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 218px) translateZ( -339px); background-color: var( --btn-n-secondaire );width: 10px;height: 75px; }
+.joystick__face--bottom { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 218px) translateZ( -361px); background-color: var( --btn-n-secondaire );width: 10px;height: 75px; }
+.joystick__face--left-bord   { transform: rotateY(90deg) translateX( -18px) translateY( 376.5px) translateZ(180px); background-color: var( --btn-n-secondaire );width: 10px;height: 22px; }
+.joystick__face--right-bord  { transform: rotateY(90deg) translateX( -18px) translateY( 376.5px) translateZ(255px); background-color: var( --btn-n-secondaire );width: 10px;height: 22px; }
+.joystick__face--top-bord    { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 217.5px) translateZ( -339px); background-color: var( --btn-n-secondaire );width: 10px;height: 22px; }
+.joystick__face--bottom-bord { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 217.5px) translateZ( -414px); background-color: var( --btn-n-secondaire );width: 10px;height: 22px; }
+/* Boutons bleus de la partie secondaire */
+.bouton-bleu {}
+.bouton-bleu__face { position: absolute; transition: all 4s ease-out; }
+.bouton-bleu__face--front  { transform: rotateY( 0deg ) translateX( 31px) translateY(  130px) translateZ( 5px); background-color: var( --btn-b-principale );width: 44px;height: 37.5px;
+    border: 0.5px solid var( --btn-b-secondaire );
+    box-sizing: border-box;
+}
+.bouton-bleu__face--right  { transform: rotateY( 90deg) translateX(-10px) translateY(129.5px) translateZ(26px); background-color: var( --btn-b-secondaire );width: 10px;height: 37.5px; }
+.bouton-bleu__face--left   { transform: rotateY( 90deg) translateX(-10px) translateY(129.5px) translateZ(70px); background-color: var( --btn-b-secondaire );width: 10px;height: 37.5px; }
+.bouton-bleu__face--top    { transform: rotateY( 90deg) translateX(-10px) rotateX(  90deg) translateY( 48px) translateZ( -107.5px); background-color: var( --btn-b-secondaire );width: 10px;height: 44px; }
+.bouton-bleu__face--bottom { transform: rotateY( 90deg) translateX(-10px) rotateX(  90deg) translateY( 48px) translateZ( -145px); background-color: var( --btn-b-secondaire );width: 10px;height: 44px;}
+
+.bouton-bleu-1  { transform: translateY(   90px) translateX( 174px); }
+.bouton-bleu-2  { transform: translateY(   90px) translateX( 130px); }
+.bouton-bleu-3  { transform: translateY(   90px) translateX(  86px); }
+.bouton-bleu-4  { transform: translateY(   90px) translateX(  42px); }
+.bouton-bleu-5  { transform: translateY(   90px) translateX(  -2px); }
+.bouton-bleu-6  { transform: translateY(127.5px) translateX( 174px); }
+.bouton-bleu-7  { transform: translateY(127.5px) translateX( 130px); }
+.bouton-bleu-8  { transform: translateY(127.5px) translateX(  86px); }
+.bouton-bleu-9  { transform: translateY(127.5px) translateX(  42px); }
+.bouton-bleu-10 { transform: translateY(127.5px) translateX(  -2px); }
+
+
 
 /* ELEMENTS DE DETAIL (Non 3D) */
 /* LEDs du haut du boitier */
@@ -316,8 +343,9 @@ body {
 }
 .pokedex:hover,
 .pokedex.show-ouvert {
-    /* Repositionnement du Pokédexs */
+    /* Repositionnement du Pokédex */
     transform: translateY( -200px ) translateZ( 200px ) translateX(-160px) rotateY(30deg) rotateX(10deg) rotateZ(00deg);
+    /*transform: translateY( -140px ) translateZ( 200px ) translateX(-160px) rotateY(-30deg) rotateX(10deg) rotateZ(00deg);*/
 }
 .pokedex:hover .partie-principale__face--back,
 .pokedex.show-ouvert .partie-principale__face--back{
@@ -341,6 +369,10 @@ body {
 .joystick.joystick-angle-right {
     transform-origin: 183px 0px 0px;
     transform: rotateY( 5deg);
+}
+/* Bouton enfoncé */
+.btn-enfonce {
+    transform: translateZ(7px);
 }
 
 /* FLEXBOX */

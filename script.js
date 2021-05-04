@@ -41,3 +41,10 @@ $( ".joystick-cliquable__right" ).on( 'mousedown', function () {
 } ).on( 'mouseup mouseleave', function () {
     $( ".joystick" ).removeClass( 'joystick-angle-right' );
 } );
+
+/* Boutons bleus */
+$( ".bouton-bleu" ).on( 'mousedown', function () {
+    $( this ).children().addClass( 'btn-enfonce' );
+} ).on( 'mouseup mouseleave', function () {
+    $( this ).children().removeClass( 'btn-enfonce' );
+} );
