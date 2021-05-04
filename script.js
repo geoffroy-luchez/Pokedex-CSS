@@ -1,22 +1,8 @@
-var pokedex = document.querySelector( '.pokedex' );
-var radioGroup = document.querySelector( '.radio-group' );
-var currentClass = '';
-
 var $ = window.jQuery;
 
-function changeSide() {
-    var checkedRadio = radioGroup.querySelector( ':checked' );
-    var showClass = 'show-' + checkedRadio.value;
-    if ( currentClass ) {
-        pokedex.classList.remove( currentClass );
-    }
-    pokedex.classList.add( showClass );
-    currentClass = showClass;
-}
-
-radioGroup.addEventListener( 'change', changeSide );
-
-/* Joystick */
+/* --------
+   Joystick
+   -------- */
 /* Haut */
 $( ".joystick-cliquable__top" ).on( 'mousedown', function () {
     $( ".joystick" ).addClass( 'joystick-angle-top' );
@@ -42,16 +28,30 @@ $( ".joystick-cliquable__right" ).on( 'mousedown', function () {
     $( ".joystick" ).removeClass( 'joystick-angle-right' );
 } );
 
+/* -------
+   Boutons
+   ------- */
 /* Boutons bleus et blancs */
 $( ".bouton-carre" ).on( 'mousedown', function () {
     $( this ).children().addClass( 'btn-enfonce' );
 } ).on( 'mouseup mouseleave', function () {
     $( this ).children().removeClass( 'btn-enfonce' );
 } );
-
 /* Bouton noir */
 $( ".btn-noir" ).on( 'mousedown', function () {
     $( this ).children().addClass( 'btn-enfonce' );
 } ).on( 'mouseup mouseleave', function () {
     $( this ).children().removeClass( 'btn-enfonce' );
+} );
+
+/* --------------------------------
+   Ouverture / fermeture du Pokédex
+   -------------------------------- */
+/* Fermture du Pokédex (clic sur le cadenas) */
+$( ".lock" ).on( 'click', function () {
+    $( ".pokedex" ).toggleClass( "ouvert" );
+} );
+/* Ouverture du Pokédex (clic sur le clapet) */
+$( ".partie-secondaire__face--front" ).on( 'click', function () {
+    $( '.pokedex' ).toggleClass( "ouvert" );
 } );

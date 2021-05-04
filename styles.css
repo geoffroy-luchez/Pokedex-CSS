@@ -13,19 +13,10 @@
     /* Couleurs des boutons noirs */
     --noir-principale: #00312b;
     --noir-secondaire: #000910;
-
     /* Couleurs de test */
     --transp: rgba(117, 190, 218, 0.5);
 }
 
-/* SCENE */
-.scene {
-    perspective: 3000px;
-    perspective-origin: 300px 500px;
-    transform: translateY( 0px );
-    position: fixed;
-    top: 50%;
-}
 a {
     width: 100%;
     height: 100%
@@ -40,16 +31,15 @@ body {
     background-size: cover;
     */
 }
-.ligne {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
 
-.border {
-    border: 1px solid black;
+/* SCENE */
+.scene {
+    perspective: 3000px;
+    perspective-origin: 300px 500px;
+    transform: translateY( 0px );
+    position: fixed;
+    top: 50%;
 }
-
 /* GROUPES D'ELEMENTS 3D */
 .groupe-3d {
     position: relative;
@@ -62,7 +52,9 @@ body {
     transform-origin: 300px 0px 7px;
 }
 
-/* ELEMENTS EN 3D */
+/* --------------
+   ELEMENTS EN 3D
+   -------------- */
 /* Ensemble du Pokedex */
 .pokedex {
     transform: rotateX( 60deg ) rotateZ( 70deg ) translateZ(-0px) translateX(50px) translateY(-200px);
@@ -138,8 +130,7 @@ body {
 .partie-blanche__face--bottom-right { transform: rotateY(  90deg) translateX( -18px) translateY( 284px) translateZ( 42px) rotateX(48.5deg); background-color: var( --gris-secondaire );width: 10px;height: 42.5px; }
 
 /* Bouton noir sur la partie principale */
-.btn_noir { cursor: pointer; }
-.btn-noir__face { position: absolute; transition: all 4s ease-out; }
+.btn-noir__face { position: absolute; transition: all 4s ease-out; cursor: pointer; }
 .btn-noir__face--front        { transform: translateX( 31px) translateY(  130px) translateZ( 14.5px) rotateY( 180deg );width: 35px;height: 35px;  background-color: var( --noir-principale ); clip-path:polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%); }
 .btn-noir__face--right        { transform: rotateY( 90deg) translateX(-10px) translateY(141px) translateZ(60.5px);width: 10px;height: 14px; background-color: var( --noir-secondaire ); }
 .btn-noir__face--left         { transform: rotateY( 90deg) translateX(-10px) translateY(140.5px) translateZ(26px);width: 10px;height: 14px; background-color: var( --noir-secondaire ); }
@@ -203,8 +194,9 @@ body {
 .bouton-carre-11 { transform: translateY(205.5px) translateX(  174px); }
 .bouton-carre-12 { transform: translateY(205.5px) translateX(  130px); }
 
-
-/* ELEMENTS DE DETAIL (Non 3D) */
+/* ---------------------------
+   ELEMENTS DE DETAIL (Non 3D)
+   --------------------------- */
 /* LEDs du haut du boitier */
 .boitier-superieur__face--front .gris {
     border-radius: 50%;
@@ -365,67 +357,53 @@ body {
     box-shadow: 0px 0px 10px 2px white;
 }
 
-/* ANIMATION */
+/* ---------
+   Animation
+   --------- */
 @-webkit-keyframes tourne {
 	0% {}
 	100% { -webkit-transform: rotateY( 360deg ); }
 }
-.pokedex.show-front  { transform: translateY(-5px) translateZ(300px) translateX(70px) rotateY(   0deg); }
-.pokedex.show-right  { transform: translateZ(0px) rotateY( -90deg); }
-.pokedex.show-back   { transform: translateZ(0px) rotateY(-180deg); }
-.pokedex.show-left   { transform: translateZ(0px) rotateY(  90deg); }
-.pokedex.show-top    { transform: translateZ(0px) rotateX( -90deg); }
-.pokedex.show-bottom { transform: translateZ(0px) rotateX(  80deg); }
-.pokedex.show-ouvert .partie-mobile { transform: rotateY( 150deg ); }
 
-/* Ouverture du Pokédex au survol */
-.pokedex:hover .partie-mobile {
+/* ----------------------------------------------
+   Ouverture du Pokédex (avec la classe "ouvert")
+   ---------------------------------------------- */
+.pokedex.ouvert .partie-mobile {
     /* Rotation de la partie mobile, ouvrant le clapet */
     transform: rotateY( 150deg );
 }
-/* Ouverture du Pokédex à la checkbox */
-.pokedex:hover .charniere__face--left,
-.pokedex:hover .charniere__face--back,
-.pokedex:hover .charniere__face--back-left,
-.pokedex:hover .charniere__face--back-right,
-.pokedex.show-ouvert .charniere__face--left,
-.pokedex.show-ouvert .charniere__face--back,
-.pokedex.show-ouvert .charniere__face--back-left,
-.pokedex.show-ouvert .charniere__face--back-right {
+.pokedex.ouvert .charniere__face--left,
+.pokedex.ouvert .charniere__face--back,
+.pokedex.ouvert .charniere__face--back-left,
+.pokedex.ouvert .charniere__face--back-right {
     /* Eclaircissement de la charnière, un peu moins que le reste */
     background-color: var( --couleur-principale-assombrie )
 }
-.pokedex:hover .partie-blanche__face--front,
-.pokedex.show-ouvert .partie-blanche__face--front
+.pokedex.ouvert .partie-blanche__face--front
 {
     /* Eclaircissement de la zone grise sous l'écran */
     background-color: var( --gris )
 }
-.pokedex:hover .partie-principale__face--front,
-.pokedex:hover .partie-secondaire__face--back,
-.pokedex:hover .partie-secondaire__face--back .relief .relief-interieur,
-.pokedex:hover .partie-principale__face--front .relief .relief-interieur,
-.pokedex.show-ouvert .partie-principale__face--front,
-.pokedex.show-ouvert .partie-secondaire__face--back,
-.pokedex.show-ouvert .partie-secondaire__face--back .relief .relief-interieur,
-.pokedex.show-ouvert .partie-principale__face--front .relief .relief-interieur
+.pokedex.ouvert .partie-principale__face--front,
+.pokedex.ouvert .partie-secondaire__face--back,
+.pokedex.ouvert .partie-secondaire__face--back .relief .relief-interieur,
+.pokedex.ouvert .partie-principale__face--front .relief .relief-interieur
 {
     /* Eclaircissement des surfaces intérieur principale et secondaire */
     background-color: var( --couleur-principale )
 }
-.pokedex:hover,
-.pokedex.show-ouvert {
+.pokedex.ouvert {
     /* Repositionnement du Pokédex */
     transform: translateY( -200px ) translateZ( 200px ) translateX(-160px) rotateY(30deg) rotateX(10deg) rotateZ(00deg);
-    /*transform: translateY( -200px ) translateZ( 400px ) translateX(50px) rotateY(-30deg) rotateX(-50deg) rotateZ(30deg);*/
 }
-.pokedex:hover .partie-principale__face--back,
-.pokedex.show-ouvert .partie-principale__face--back{
+.pokedex.ouvert .partie-principale__face--back{
     /* Retirer l'ombre */
     box-shadow: none;
 }
 
-/* Mouvement joystick */
+/* ----------------------
+   Mouvements des boutons
+   ---------------------- */
 .joystick.joystick-angle-top {
     transform-origin: 0px 430px 0px;
     transform: rotateX( 5deg);
@@ -451,7 +429,9 @@ body {
     transform: translateZ(-7px);
 }
 
-/* FLEXBOX */
+/* -------
+   Flexbox
+   ------- */
 .flex-center {
 	display: flex;
 	align-items: center;
@@ -464,4 +444,9 @@ body {
 .flex-row {
 	display: flex;
 	flex-direction: row;
+}
+.ligne {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
