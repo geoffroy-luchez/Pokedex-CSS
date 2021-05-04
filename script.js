@@ -42,8 +42,15 @@ $( ".joystick-cliquable__right" ).on( 'mousedown', function () {
     $( ".joystick" ).removeClass( 'joystick-angle-right' );
 } );
 
-/* Boutons bleus */
-$( ".bouton-bleu" ).on( 'mousedown', function () {
+/* Boutons bleus et blancs */
+$( ".bouton-carre" ).on( 'mousedown', function () {
+    $( this ).children().addClass( 'btn-enfonce' );
+} ).on( 'mouseup mouseleave', function () {
+    $( this ).children().removeClass( 'btn-enfonce' );
+} );
+
+/* Bouton noir */
+$( ".btn-noir" ).on( 'mousedown', function () {
     $( this ).children().addClass( 'btn-enfonce' );
 } ).on( 'mouseup mouseleave', function () {
     $( this ).children().removeClass( 'btn-enfonce' );

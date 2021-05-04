@@ -65,10 +65,10 @@
 					<!-- Joystick -->
                     <div class="joystick groupe-3d">
     					<div class="joystick__face joystick__face--front">
-                            <div class="joystick-cliquable__top"></div>
-                            <div class="joystick-cliquable__bottom"></div>
-                            <div class="joystick-cliquable__left"></div>
-                            <div class="joystick-cliquable__right"></div>
+                            <div class="joystick-cliquable__top"><div></div></div>
+                            <div class="joystick-cliquable__bottom"><div></div></div>
+                            <div class="joystick-cliquable__left"><div></div></div>
+                            <div class="joystick-cliquable__right"><div></div></div>
                         </div>
     					<div class="joystick__face joystick__face--top"></div>
                         <div class="joystick__face joystick__face--bottom"></div>
@@ -107,6 +107,24 @@
 					<div class="lampe-bleue__face lampe-bleue__face--top-left"></div>
 					<div class="lampe-bleue__face lampe-bleue__face--top-right"></div>
 
+                    <!-- Bouton noir -->
+                    <div class="btn-noir groupe-3d">
+                        <div class="groupe-3d">
+                            <div class="btn-noir__face btn-noir__face--front">
+                                <div></div>
+                            </div>
+                            <div class="btn-noir__face btn-noir__face--left"></div>
+                            <div class="btn-noir__face btn-noir__face--right"></div>
+                            <div class="btn-noir__face btn-noir__face--top"></div>
+                            <div class="btn-noir__face btn-noir__face--top-left"></div>
+                            <div class="btn-noir__face btn-noir__face--top-right"></div>
+                            <div class="btn-noir__face btn-noir__face--bottom"></div>
+                            <div class="btn-noir__face btn-noir__face--bottom-left"></div>
+                            <div class="btn-noir__face btn-noir__face--bottom-right"></div>
+
+                        </div>
+                    </div>
+
 					<!-- Ensemble chanière & partie secondaire -->
                     <div class="partie-mobile groupe-3d">
                         <!-- Charnière -->
@@ -131,8 +149,12 @@
                         <div class='partie-secondaire__face partie-secondaire__face--back'>
 							<!-- Intérieur -->
 							<div class="relief">
-                                <div class="relief-interieur">
+                                <div class="relief-interieur flex-col">
 									<div class="ecran"></div>
+                                    <div class="flex-row">
+                                        <div class="petit-ecran"></div>
+                                        <div class="petit-ecran"></div>
+                                    </div>
 								</div>
                             </div>
 						</div>
@@ -143,94 +165,140 @@
                         <div class='partie-secondaire__face partie-secondaire__face--top-center'></div>
                         <div class='partie-secondaire__face partie-secondaire__face--top-right'></div>
                         <!-- Boutons bleus -->
-                        <div class="bouton-bleu bouton-bleu-1 groupe-3d">
+                        <div class="bouton-carre btn-bleu bouton-carre-1 groupe-3d">
                             <div class="groupe-3d">
-                                <div class="bouton-bleu__face bouton-bleu__face--front"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--top"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--bottom"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--left"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--right"></div>
+                                <div class="bouton-carre__face bouton-carre__face--front">
+                                    <img src="./images/svg/rotate-ccw.svg" alt="Rotation sens anti-horaire">
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
-                        <div class="bouton-bleu bouton-bleu-2 groupe-3d">
+                        <div class="bouton-carre btn-bleu bouton-carre-2 groupe-3d">
                             <div class="groupe-3d">
-                                <div class="bouton-bleu__face bouton-bleu__face--front"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--top"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--bottom"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--left"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--right"></div>
+                                <div class="bouton-carre__face bouton-carre__face--front">
+                                    <img src="./images/svg/minus.svg" alt="Aucune rotation">
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
-                        <div class="bouton-bleu bouton-bleu-3 groupe-3d">
+                        <div class="bouton-carre btn-bleu bouton-carre-3 groupe-3d">
                             <div class="groupe-3d">
-                                <div class="bouton-bleu__face bouton-bleu__face--front"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--top"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--bottom"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--left"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--right"></div>
+                                <div class="bouton-carre__face bouton-carre__face--front">
+                                    <img src="./images/svg/rotate-cw.svg" alt="Rotation sens horaire">
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
-                        <div class="bouton-bleu bouton-bleu-4 groupe-3d">
+                        <div class="bouton-carre btn-bleu bouton-carre-4 groupe-3d">
                             <div class="groupe-3d">
-                                <div class="bouton-bleu__face bouton-bleu__face--front"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--top"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--bottom"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--left"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--right"></div>
+                                <div class="bouton-carre__face bouton-carre__face--front">
+                                    <img src="./images/svg/lock.svg" alt="Fermer le Pokédex">
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
-                        <div class="bouton-bleu bouton-bleu-5 groupe-3d">
+                        <div class="bouton-carre btn-bleu bouton-carre-5 groupe-3d">
                             <div class="groupe-3d">
-                                <div class="bouton-bleu__face bouton-bleu__face--front"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--top"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--bottom"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--left"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--right"></div>
+                                <div class="bouton-carre__face bouton-carre__face--front">
+                                    <img src="./images/svg/power.svg" alt="Power">
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
-                        <div class="bouton-bleu bouton-bleu-6 groupe-3d">
+                        <div class="bouton-carre btn-bleu bouton-carre-6 groupe-3d">
                             <div class="groupe-3d">
-                                <div class="bouton-bleu__face bouton-bleu__face--front"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--top"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--bottom"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--left"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--right"></div>
+                                <div class="bouton-carre__face bouton-carre__face--front">
+                                    <a href="https://github.com/geoffroy-luchez/Pokedex-CSS"><img src="./images/svg/github.svg" alt="Github"></a>
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
-                        <div class="bouton-bleu bouton-bleu-7 groupe-3d">
+                        <div class="bouton-carre btn-bleu bouton-carre-7 groupe-3d">
                             <div class="groupe-3d">
-                                <div class="bouton-bleu__face bouton-bleu__face--front"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--top"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--bottom"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--left"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--right"></div>
+                                <div class="bouton-carre__face bouton-carre__face--front">
+                                    <a href="https://www.linkedin.com/in/geoffroy-l-703443b7/">
+                                        <img src="./images/svg/linkedin.svg" alt="Linkedin">
+                                    </a>
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
-                        <div class="bouton-bleu bouton-bleu-8 groupe-3d">
+                        <div class="bouton-carre btn-bleu bouton-carre-8 groupe-3d">
                             <div class="groupe-3d">
-                                <div class="bouton-bleu__face bouton-bleu__face--front"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--top"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--bottom"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--left"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--right"></div>
+                                <div class="bouton-carre__face bouton-carre__face--front">
+
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
-                        <div class="bouton-bleu bouton-bleu-9 groupe-3d">
+                        <div class="bouton-carre btn-bleu bouton-carre-9 groupe-3d">
                             <div class="groupe-3d">
-                                <div class="bouton-bleu__face bouton-bleu__face--front"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--top"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--bottom"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--left"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--right"></div>
+                                <div class="bouton-carre__face bouton-carre__face--front">
+                                    <img src="./images/svg/package.svg" alt="Sources">
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
-                        <div class="bouton-bleu bouton-bleu-10 groupe-3d">
+                        <div class="bouton-carre btn-bleu bouton-carre-10 groupe-3d">
                             <div class="groupe-3d">
-                                <div class="bouton-bleu__face bouton-bleu__face--front"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--top"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--bottom"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--left"></div>
-                                <div class="bouton-bleu__face bouton-bleu__face--right"></div>
+                                <div class="bouton-carre__face bouton-carre__face--front">
+                                    <a href="https://pokeapi.co/">
+                                        <img src="./images/svg/server.svg" alt="API">
+                                    </a>
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
+                            </div>
+                        </div>
+                        <div class="bouton-carre btn-blanc bouton-carre-11 groupe-3d">
+                            <div class="groupe-3d">
+                                <div class="bouton-carre__face bouton-carre__face--front">
+                                    <img src="./images/svg/check.svg" alt="Linkedin">
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
+                            </div>
+                        </div>
+                        <div class="bouton-carre btn-blanc bouton-carre-12 groupe-3d">
+                            <div class="groupe-3d">
+                                <div class="bouton-carre__face bouton-carre__face--front">
+                                    <img src="./images/svg/return.svg" alt="Linkedin" height="25px">
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
                     </div>

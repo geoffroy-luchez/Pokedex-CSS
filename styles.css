@@ -8,14 +8,11 @@
     --gris: #dedede;
     --gris-secondaire: #848585;
     /* Couleurs de la grande lampe bleue */
-    --lampe-principale: #28aafd;
-    --lampe-secondaire: #196a9e;
+    --bleu-principale: #28aafd;
+    --bleu-secondaire: #035175;
     /* Couleurs des boutons noirs */
-    --btn-n-principale: #00312b;
-    --btn-n-secondaire: #000910;
-    /* Couleurs des boutons noirs */
-    --btn-b-principale: #28aafd;
-    --btn-b-secondaire: #035175;
+    --noir-principale: #00312b;
+    --noir-secondaire: #000910;
 
     /* Couleurs de test */
     --transp: rgba(117, 190, 218, 0.5);
@@ -29,8 +26,12 @@
     position: fixed;
     top: 50%;
 }
-
+a {
+    width: 100%;
+    height: 100%
+}
 body {
+    user-select: none;
     font-family: verdana;
     font-size: 12px;
     background: var( --couleur-fond );
@@ -87,8 +88,8 @@ body {
 .partie-principale__face--top    { transform: rotateX( 90deg) translateZ(   20px) translateY( 8px); background-color: var( --couleur-secondaire );width: 320px;height: 40px;}
 /* Charnière liant la partie principale et secondaire */
 .charniere__face { position: absolute; transition: all 4s ease-out; }
-.charniere__face--top    { transform: rotateX( 90deg) translateZ( -30px) translateX(280px) translateY(7.57px);background-color: var( --couleur-secondaire );width: 40px; height: 40px;clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);}
-.charniere__face--bottom { transform: rotateX(-90deg) translateZ(450px) translateX(280px) translateY(-7.5px);background-color: var( --couleur-secondaire );width: 40px; height: 40px;clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);}
+.charniere__face--top         { transform: rotateX( 90deg) translateZ( -30px) translateX(280px) translateY(7.57px);background-color: var( --couleur-secondaire );width: 40px; height: 40px;clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);}
+.charniere__face--bottom      { transform: rotateX(-90deg) translateZ(450px) translateX(280px) translateY(-7.5px);background-color: var( --couleur-secondaire );width: 40px; height: 40px;clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);}
 .charniere__face--front       { transform: rotateY(   0deg) translateZ(  27.5px) translateX(  292px) translateY(50px); background-color: var( --couleur-principale );width: 16.57px; height: 420px;}
 .charniere__face--front-right { transform: rotateY(  45deg) translateZ( 231.5px) translateX(  201px) translateY(50px); background-color: var( --couleur-principale );width: 16.57px; height: 420px;}
 .charniere__face--front-left  { transform: rotateY( -45deg) translateZ(  -181px) translateX(211.5px) translateY(50px); background-color: var( --couleur-secondaire );width: 16.57px; height: 420px;}
@@ -99,31 +100,31 @@ body {
 .charniere__face--back-left   { transform: rotateY(-133deg) translateZ(-198.9px) translateX( -194px) translateY(50px); background-color: var( --couleur-secondaire );width: 16.57px; height: 420px;}
 /* Bloc supérieur du boitier principal */
 .boitier-superieur__face { position: absolute; }
-.boitier-superieur__face--front { transform: rotateY(  0deg) translateZ(27.5px); background-color: #D1092B ;width: 320px;height: 100px;clip-path: polygon(34% 100%, 50% 50%, 100% 50%, 100% 0, 0 0, 0 100%);}
-.boitier-superieur__face--left  { transform: rotateY(-90deg) translateZ( 7.3px) translateX(  20.4px); background-color: var( --couleur-secondaire );width: 15px;height: 100px;}
-.boitier-superieur__face--right { transform: rotateY( 90deg) translateZ( 300px) translateX(    -7px); background-color: var( --couleur-secondaire );width: 40px;height: 50px;}
-.boitier-superieur__face--back  { transform: rotateY(180deg) translateZ(12.5px) translateX(-279.8px); background-color: var( --couleur-secondaire );width: 40px;height: 50px;}
+.boitier-superieur__face--front         { transform: rotateY(  0deg) translateZ(27.5px); background-color: #D1092B ;width: 320px;height: 100px;clip-path: polygon(34% 100%, 50% 50%, 100% 50%, 100% 0, 0 0, 0 100%);}
+.boitier-superieur__face--left          { transform: rotateY(-90deg) translateZ( 7.3px) translateX(  20.4px); background-color: var( --couleur-secondaire );width: 15px;height: 100px;}
+.boitier-superieur__face--right         { transform: rotateY( 90deg) translateZ( 300px) translateX(    -7px); background-color: var( --couleur-secondaire );width: 40px;height: 50px;}
+.boitier-superieur__face--back          { transform: rotateY(180deg) translateZ(12.5px) translateX(-279.8px); background-color: var( --couleur-secondaire );width: 40px;height: 50px;}
 .boitier-superieur__face--bottom-right  { transform: rotateX( 90deg) translateZ(  -30px) translateY( 8px) translateX(159px); background-color: var( --couleur-secondaire );width: 161.3px;height: 40px;}
 .boitier-superieur__face--bottom-center { transform: rotateX( 90deg) rotateY(-45deg) translateZ(-117px) translateY(20px) translateX( 21.4px); background-color: var( --couleur-secondaire );width: 72px;height: 15px;}
 .boitier-superieur__face--bottom-left   { transform: rotateX( 90deg) translateZ(-92.5px) translateY(20px) translateX(  0px); background-color: var( --couleur-secondaire );width: 109px;height: 15px;}
 /* Lampe Bleue */
 .lampe-bleue__face { position: absolute; }
-.lampe-bleue__face--front  { transform: translateX(42px) translateY(42px) translateZ(42.5px) rotateY(  0deg); background-color: var(--lampe-principale) ;width: 20px;height: 20px; }
-.lampe-bleue__face--top    { transform: translateX(42px) translateY(24px) translateZ(35px) rotateY( 0deg) rotateX( 45deg) rotateZ( 180deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)) ;width: 20px;height: 21.21px; }
-.lampe-bleue__face--bottom { transform: translateX(42px) translateY(58.9px) translateZ(35px) rotateY(180deg) rotateX( 45deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)) ;width: 20px;height: 21.21px; }
-.lampe-bleue__face--left   { transform: translateX(24.5px) translateY(41.5px) translateZ(35px) rotateZ(-90deg) rotateX( 45deg)rotateZ( 180deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)) ;width: 20px;height: 21.21px; }
-.lampe-bleue__face--right  { transform: translateX(59.5px) translateY(41.5px) translateZ(35px) rotateZ( 90deg) rotateX( 45deg)rotateZ( 180deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)) ;width: 20px;height: 21.21px; }
-.lampe-bleue__face--top-left     { transform: translateX(27.8px) translateY(29.2px) translateZ(35px) rotateX( -90deg) rotateY( 45deg) rotateX( -35deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)); ;width: 21.21px;height: 18.4px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
-.lampe-bleue__face--top-right    { transform: translateX(55px) translateY(29.2px) translateZ(35px) rotateX( -90deg) rotateY( -45deg) rotateX( -35deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)); ;width: 21.21px;height: 18.4px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
-.lampe-bleue__face--bottom-left  { transform: translateX(27.8px) translateY(56.6px) translateZ(35px) rotateX( -90deg) rotateY( 135deg) rotateX( -35deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)); ;width: 21.21px;height: 18.4px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
-.lampe-bleue__face--bottom-right { transform: translateX(55px) translateY(56.6px) translateZ(35px) rotateX( -90deg) rotateY( -135deg) rotateX( -35deg); background: linear-gradient(var(--lampe-principale), var(--lampe-secondaire)); ;width: 21.21px;height: 18.4px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+.lampe-bleue__face--front        { transform: translateX(42px) translateY(42px) translateZ(42.5px) rotateY(  0deg); background-color: var(--bleu-principale) ;width: 20px;height: 20px; }
+.lampe-bleue__face--top          { transform: translateX(42px) translateY(24px) translateZ(35px) rotateY( 0deg) rotateX( 45deg) rotateZ( 180deg); background: linear-gradient(var(--bleu-principale), var(--bleu-secondaire)) ;width: 20px;height: 21.21px; }
+.lampe-bleue__face--bottom       { transform: translateX(42px) translateY(58.9px) translateZ(35px) rotateY(180deg) rotateX( 45deg); background: linear-gradient(var(--bleu-principale), var(--bleu-secondaire)) ;width: 20px;height: 21.21px; }
+.lampe-bleue__face--left         { transform: translateX(24.5px) translateY(41.5px) translateZ(35px) rotateZ(-90deg) rotateX( 45deg)rotateZ( 180deg); background: linear-gradient(var(--bleu-principale), var(--bleu-secondaire)) ;width: 20px;height: 21.21px; }
+.lampe-bleue__face--right        { transform: translateX(59.5px) translateY(41.5px) translateZ(35px) rotateZ( 90deg) rotateX( 45deg)rotateZ( 180deg); background: linear-gradient(var(--bleu-principale), var(--bleu-secondaire)) ;width: 20px;height: 21.21px; }
+.lampe-bleue__face--top-left     { transform: translateX(27.8px) translateY(29.2px) translateZ(35px) rotateX( -90deg) rotateY( 45deg) rotateX( -35deg); background: linear-gradient(var(--bleu-principale), var(--bleu-secondaire)); ;width: 21.21px;height: 18.4px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+.lampe-bleue__face--top-right    { transform: translateX(55px) translateY(29.2px) translateZ(35px) rotateX( -90deg) rotateY( -45deg) rotateX( -35deg); background: linear-gradient(var(--bleu-principale), var(--bleu-secondaire)); ;width: 21.21px;height: 18.4px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+.lampe-bleue__face--bottom-left  { transform: translateX(27.8px) translateY(56.6px) translateZ(35px) rotateX( -90deg) rotateY( 135deg) rotateX( -35deg); background: linear-gradient(var(--bleu-principale), var(--bleu-secondaire)); ;width: 21.21px;height: 18.4px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+.lampe-bleue__face--bottom-right { transform: translateX(55px) translateY(56.6px) translateZ(35px) rotateX( -90deg) rotateY( -135deg) rotateX( -35deg); background: linear-gradient(var(--bleu-principale), var(--bleu-secondaire)); ;width: 21.21px;height: 18.4px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
 /* Partie secondaire */
 .partie-secondaire__face { position: absolute; transition: all 4s ease-out; }
-.partie-secondaire__face--front  { transform: rotateY(  0deg) translateZ( 27.5px) translateY(   52px); background-color: var( --couleur-principale );width: 289px;height: 418px; clip-path: polygon(0 100%, 0 12%, 38% 12%, 55.5% 0, 100% 0, 100% 100%);}
-.partie-secondaire__face--back   { transform: rotateY(  180deg) translateZ( -15px) translateY(   52px); background-color: var( --couleur-secondaire );width: 289px;height: 418px; clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 12%, 62% 12%, 44% 0);}
-.partie-secondaire__face--right  { transform: rotateY( 90deg) translateZ(  281px) translateX(  -21px) translateY(52px); background-color: var( --couleur-secondaire );width: 14px;height: 418px;}
-.partie-secondaire__face--left   { transform: rotateY(-90deg) translateZ(    7px) translateX(   21px) translateY(102px); background-color: var( --couleur-secondaire );width: 14px;height: 368px;}
-.partie-secondaire__face--bottom { transform: rotateX(-90deg) translateY(-20.5px) translateZ(462.5px); background-color: var( --couleur-secondaire );width: 289px;height: 14px;}
+.partie-secondaire__face--front      { transform: rotateY(  0deg) translateZ( 27.5px) translateY(   52px); background-color: var( --couleur-principale );width: 289px;height: 418px; clip-path: polygon(0 100%, 0 12%, 38% 12%, 55.5% 0, 100% 0, 100% 100%);}
+.partie-secondaire__face--back       { transform: rotateY(  180deg) translateZ( -15px) translateY(   52px); background-color: var( --couleur-secondaire );width: 289px;height: 418px; clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 12%, 62% 12%, 44% 0);}
+.partie-secondaire__face--right      { transform: rotateY( 90deg) translateZ(  281px) translateX(  -21px) translateY(52px); background-color: var( --couleur-secondaire );width: 14px;height: 418px;}
+.partie-secondaire__face--left       { transform: rotateY(-90deg) translateZ(    7px) translateX(   21px) translateY(102px); background-color: var( --couleur-secondaire );width: 14px;height: 368px;}
+.partie-secondaire__face--bottom     { transform: rotateX(-90deg) translateY(-20.5px) translateZ(462.5px); background-color: var( --couleur-secondaire );width: 289px;height: 14px;}
 .partie-secondaire__face--top-right  { transform: rotateX(90deg) translateZ(-45.6px) translateY(20px) translateX(160px); background-color: var( --couleur-secondaire );width: 129px;height: 14px;}
 .partie-secondaire__face--top-left   { transform: rotateX(90deg) translateZ(  -95px) translateY(20px) translateX(  0px); background-color: var( --couleur-secondaire );width: 111px;height: 15px;}
 .partie-secondaire__face--top-center { transform: rotateX(90deg) rotateY(-45deg) translateZ(-120px) translateY(20px) translateX(21.4px); background-color: var( --couleur-secondaire );width: 71px;height: 15px;}
@@ -135,40 +136,72 @@ body {
 .partie-blanche__face--top          { transform: rotateY(  90deg) rotateX(  90deg) translateX( -18px) translateY( 133px) translateZ( -22.5px); background-color: var( --gris-secondaire );width: 10px;height: 215px; }
 .partie-blanche__face--bottom       { transform: rotateY(  90deg) rotateX(  90deg) translateX( -18px) translateY( 149px) translateZ( -227.8px); background-color: var( --gris-secondaire );width: 10px;height: 183px; }
 .partie-blanche__face--bottom-right { transform: rotateY(  90deg) translateX( -18px) translateY( 284px) translateZ( 42px) rotateX(48.5deg); background-color: var( --gris-secondaire );width: 10px;height: 42.5px; }
+
+/* Bouton noir sur la partie principale */
+.btn_noir { cursor: pointer; }
+.btn-noir__face { position: absolute; transition: all 4s ease-out; }
+.btn-noir__face--front        { transform: translateX( 31px) translateY(  130px) translateZ( 14.5px) rotateY( 180deg );width: 35px;height: 35px;  background-color: var( --noir-principale ); clip-path:polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%); }
+.btn-noir__face--right        { transform: rotateY( 90deg) translateX(-10px) translateY(141px) translateZ(60.5px);width: 10px;height: 14px; background-color: var( --noir-secondaire ); }
+.btn-noir__face--left         { transform: rotateY( 90deg) translateX(-10px) translateY(140.5px) translateZ(26px);width: 10px;height: 14px; background-color: var( --noir-secondaire ); }
+.btn-noir__face--top          { transform: rotateY( 90deg) translateX(-10px) rotateX(  90deg) translateY( 43.5px) translateZ(-123px);width: 10px;height: 14px; background-color: var( --noir-secondaire ); }
+.btn-noir__face--top-right    { transform: rotateY( 90deg) translateX(-10px) translateY(127.5px) translateZ(55px) rotateX(45deg);width: 10px;height: 15px; background-color: var( --noir-secondaire ); }
+.btn-noir__face--top-left     { transform: rotateY( 90deg) translateX(-10px) translateY(127.5px) translateZ(31.5px) rotateX(-45deg);width: 10px;height: 15px; background-color: var( --noir-secondaire ); }
+.btn-noir__face--bottom       { transform: rotateY( 90deg) translateX(-10px) rotateX(  90deg) translateY( 43.5px) translateZ(-158px);width: 10px;height: 14px; background-color: var( --noir-secondaire ); }
+.btn-noir__face--bottom-right { transform: rotateY( 90deg) translateX(-10px) translateY(152.5px) translateZ(55px) rotateX(-45deg);width: 10px;height: 15px; background-color: var( --noir-secondaire ); }
+.btn-noir__face--bottom-left  { transform: rotateY( 90deg) translateX(-10px) translateY(152.5px) translateZ(31.5px) rotateX(45deg) ;width: 10px;height: 15px; background-color: var( --noir-secondaire ); }
+.btn-noir {
+    transform: translateY(  220px) translateX( -10px) translateZ(8px);
+}
 /* Joystick */
 .joystick__face { position: absolute; transition: all 4s ease-out; }
-.joystick__face--front  { transform: rotateY( 0deg) translateZ( 23px) translateX(185px) translateY(350px); background-color: var( --btn-n-principale );width: 75px;height: 75px; clip-path: polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%); }
-.joystick__face--left   { transform: rotateY(90deg) translateX( -18px) translateY( 350px) translateZ( 206.5px); background-color: var( --btn-n-secondaire );width: 10px;height: 75px; }
-.joystick__face--right  { transform: rotateY(90deg) translateX( -18px) translateY( 350px) translateZ(228px); background-color: var( --btn-n-secondaire );width: 10px;height: 75px; }
-.joystick__face--top    { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 218px) translateZ( -339px); background-color: var( --btn-n-secondaire );width: 10px;height: 75px; }
-.joystick__face--bottom { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 218px) translateZ( -361px); background-color: var( --btn-n-secondaire );width: 10px;height: 75px; }
-.joystick__face--left-bord   { transform: rotateY(90deg) translateX( -18px) translateY( 376.5px) translateZ(180px); background-color: var( --btn-n-secondaire );width: 10px;height: 22px; }
-.joystick__face--right-bord  { transform: rotateY(90deg) translateX( -18px) translateY( 376.5px) translateZ(255px); background-color: var( --btn-n-secondaire );width: 10px;height: 22px; }
-.joystick__face--top-bord    { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 217.5px) translateZ( -339px); background-color: var( --btn-n-secondaire );width: 10px;height: 22px; }
-.joystick__face--bottom-bord { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 217.5px) translateZ( -414px); background-color: var( --btn-n-secondaire );width: 10px;height: 22px; }
+.joystick__face--front       { transform: rotateY( 0deg) translateZ( 23px) translateX(185px) translateY(350px); background-color: var( --noir-principale );width: 75px;height: 75px; clip-path: polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%); }
+.joystick__face--left        { transform: rotateY(90deg) translateX( -18px) translateY( 350px) translateZ( 206.5px); background-color: var( --noir-secondaire );width: 10px;height: 75px; }
+.joystick__face--right       { transform: rotateY(90deg) translateX( -18px) translateY( 350px) translateZ(228px); background-color: var( --noir-secondaire );width: 10px;height: 75px; }
+.joystick__face--top         { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 218px) translateZ( -339px); background-color: var( --noir-secondaire );width: 10px;height: 75px; }
+.joystick__face--bottom      { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 218px) translateZ( -361px); background-color: var( --noir-secondaire );width: 10px;height: 75px; }
+.joystick__face--left-bord   { transform: rotateY(90deg) translateX( -18px) translateY( 376.5px) translateZ(180px); background-color: var( --noir-secondaire );width: 10px;height: 22px; }
+.joystick__face--right-bord  { transform: rotateY(90deg) translateX( -18px) translateY( 376.5px) translateZ(255px); background-color: var( --noir-secondaire );width: 10px;height: 22px; }
+.joystick__face--top-bord    { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 217.5px) translateZ( -339px); background-color: var( --noir-secondaire );width: 10px;height: 22px; }
+.joystick__face--bottom-bord { transform: rotateY(90deg) rotateX(  90deg) translateX( -18px) translateY( 217.5px) translateZ( -414px); background-color: var( --noir-secondaire );width: 10px;height: 22px; }
+
 /* Boutons bleus de la partie secondaire */
-.bouton-bleu {}
-.bouton-bleu__face { position: absolute; transition: all 4s ease-out; }
-.bouton-bleu__face--front  { transform: rotateY( 0deg ) translateX( 31px) translateY(  130px) translateZ( 5px); background-color: var( --btn-b-principale );width: 44px;height: 37.5px;
-    border: 0.5px solid var( --btn-b-secondaire );
+.bouton-carre { cursor: pointer; }
+.bouton-carre__face { position: absolute; transition: all 4s ease-out; }
+.bouton-carre__face--front  { transform: translateX( 31px) translateY(  130px) translateZ( 5px) rotateY( 180deg );width: 44px;height: 37.5px; }
+.bouton-carre__face--right  { transform: rotateY( 90deg) translateX(-10px) translateY(129.5px) translateZ(26px);width: 10px;height: 37.5px; }
+.bouton-carre__face--left   { transform: rotateY( 90deg) translateX(-10px) translateY(129.5px) translateZ(70px);width: 10px;height: 37.5px; }
+.bouton-carre__face--top    { transform: rotateY( 90deg) translateX(-10px) rotateX(  90deg) translateY( 48px) translateZ(-107.5px);width: 10px;height: 44px; }
+.bouton-carre__face--bottom { transform: rotateY( 90deg) translateX(-10px) rotateX(  90deg) translateY( 48px) translateZ(  -145px);width: 10px;height: 44px; }
+.btn-bleu .bouton-carre__face--front  {
+    background-color: var( --bleu-principale );
+    border: 0.5px solid var( --bleu-secondaire );
     box-sizing: border-box;
 }
-.bouton-bleu__face--right  { transform: rotateY( 90deg) translateX(-10px) translateY(129.5px) translateZ(26px); background-color: var( --btn-b-secondaire );width: 10px;height: 37.5px; }
-.bouton-bleu__face--left   { transform: rotateY( 90deg) translateX(-10px) translateY(129.5px) translateZ(70px); background-color: var( --btn-b-secondaire );width: 10px;height: 37.5px; }
-.bouton-bleu__face--top    { transform: rotateY( 90deg) translateX(-10px) rotateX(  90deg) translateY( 48px) translateZ( -107.5px); background-color: var( --btn-b-secondaire );width: 10px;height: 44px; }
-.bouton-bleu__face--bottom { transform: rotateY( 90deg) translateX(-10px) rotateX(  90deg) translateY( 48px) translateZ( -145px); background-color: var( --btn-b-secondaire );width: 10px;height: 44px;}
-
-.bouton-bleu-1  { transform: translateY(   90px) translateX( 174px); }
-.bouton-bleu-2  { transform: translateY(   90px) translateX( 130px); }
-.bouton-bleu-3  { transform: translateY(   90px) translateX(  86px); }
-.bouton-bleu-4  { transform: translateY(   90px) translateX(  42px); }
-.bouton-bleu-5  { transform: translateY(   90px) translateX(  -2px); }
-.bouton-bleu-6  { transform: translateY(127.5px) translateX( 174px); }
-.bouton-bleu-7  { transform: translateY(127.5px) translateX( 130px); }
-.bouton-bleu-8  { transform: translateY(127.5px) translateX(  86px); }
-.bouton-bleu-9  { transform: translateY(127.5px) translateX(  42px); }
-.bouton-bleu-10 { transform: translateY(127.5px) translateX(  -2px); }
-
+.btn-bleu .bouton-carre__face--right  { background-color: var( --bleu-secondaire ); }
+.btn-bleu .bouton-carre__face--left   { background-color: var( --bleu-secondaire ); }
+.btn-bleu .bouton-carre__face--top   { background-color: var( --bleu-secondaire ); }
+.btn-bleu .bouton-carre__face--bottom { background-color: var( --bleu-secondaire ); }
+.bouton-carre-1  { transform: translateY(   95px) translateX( 174px); }
+.bouton-carre-2  { transform: translateY(   95px) translateX( 130px); }
+.bouton-carre-3  { transform: translateY(   95px) translateX(  86px); }
+.bouton-carre-4  { transform: translateY(   95px) translateX(  42px); }
+.bouton-carre-5  { transform: translateY(   95px) translateX(  -2px); }
+.bouton-carre-6  { transform: translateY(132.5px) translateX( 174px); }
+.bouton-carre-7  { transform: translateY(132.5px) translateX( 130px); }
+.bouton-carre-8  { transform: translateY(132.5px) translateX(  86px); }
+.bouton-carre-9  { transform: translateY(132.5px) translateX(  42px); }
+.bouton-carre-10 { transform: translateY(132.5px) translateX(  -2px); }
+.btn-blanc .bouton-carre__face--front  {
+    background-color: var( --gris );
+    border: 0.5px solid var( --gris-secondaire );
+    box-sizing: border-box;
+}
+.btn-blanc .bouton-carre__face--right  { background-color: var( --gris-secondaire ); }
+.btn-blanc .bouton-carre__face--left   { background-color: var( --gris-secondaire ); }
+.btn-blanc .bouton-carre__face--top    { background-color: var( --gris-secondaire ); }
+.btn-blanc .bouton-carre__face--bottom { background-color: var( --gris-secondaire ); }
+.bouton-carre-11 { transform: translateY(205.5px) translateX(  174px); }
+.bouton-carre-12 { transform: translateY(205.5px) translateX(  130px); }
 
 
 /* ELEMENTS DE DETAIL (Non 3D) */
@@ -262,7 +295,16 @@ body {
     filter: grayscale(100%);
     overflow: auto;
     height:75px; width:220px;
-    margin-top:70px; margin-left:25px;
+    margin-top:73px; margin-left:25px;
+    background-color: darkgrey;
+    border-radius: 5px;
+}
+.partie-secondaire__face--back .petit-ecran {
+    box-shadow: inset 0 0 14rem #101010, inset 0 0 2rem #101010;
+    filter: grayscale(100%);
+    overflow: auto;
+    height:35px; width:96px;
+    margin-top:200px; margin-left:25px;
     background-color: darkgrey;
     border-radius: 5px;
 }
@@ -291,6 +333,36 @@ body {
     height:25px; width:25px; margin-top:25px; margin-left:50px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+/* Icônes et trucs cliquables */
+.bouton-carre__face a, .bouton-carre__face{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bouton-carre__face img:hover {
+    filter: drop-shadow(0px 0px 5px white);
+}
+.joystick__face > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.joystick__face > div:hover > div {
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0px 0px 10px 2px white;
+}
+.btn-noir__face--front {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-noir:hover .btn-noir__face--front div {
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0px 0px 10px 2px white;
 }
 
 /* ANIMATION */
@@ -345,7 +417,7 @@ body {
 .pokedex.show-ouvert {
     /* Repositionnement du Pokédex */
     transform: translateY( -200px ) translateZ( 200px ) translateX(-160px) rotateY(30deg) rotateX(10deg) rotateZ(00deg);
-    /*transform: translateY( -140px ) translateZ( 200px ) translateX(-160px) rotateY(-30deg) rotateX(10deg) rotateZ(00deg);*/
+    /*transform: translateY( -200px ) translateZ( 400px ) translateX(50px) rotateY(-30deg) rotateX(-50deg) rotateZ(30deg);*/
 }
 .pokedex:hover .partie-principale__face--back,
 .pokedex.show-ouvert .partie-principale__face--back{
@@ -371,8 +443,12 @@ body {
     transform: rotateY( 5deg);
 }
 /* Bouton enfoncé */
-.btn-enfonce {
+.bouton-carre .btn-enfonce {
     transform: translateZ(7px);
+}
+/* Bouton enfoncé */
+.btn-noir .btn-enfonce {
+    transform: translateZ(-7px);
 }
 
 /* FLEXBOX */
