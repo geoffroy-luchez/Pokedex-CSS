@@ -58,8 +58,20 @@
 
 					<!-- Boitier blanc de l'écran -->
                     <div class="partie-blanche__face partie-blanche__face--front">
-                        <div class="ecran">
-                            <iframe style="margin-top:2px; margin-left:2px" width="150" height="125" src="https://www.youtube.com/embed/fpRAU_2rNYw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="flex-col">
+                            <div class="flex-row">
+                                <div class="led-rouge"></div>
+                                <div class="led-rouge"></div>
+                            </div>
+                            <div class="ecran flex-center">
+                                <iframe width="150" height="127.5" src="https://www.youtube.com/embed/oAhvQoLpvsM?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="flex-row">
+                                <div class="voyant-rouge"></div>
+                                <div class="lignes">
+                                    <div class="ligne"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="partie-blanche__face partie-blanche__face--top"></div>
@@ -71,10 +83,10 @@
 					<!-- Joystick -->
                     <div class="joystick groupe-3d">
     					<div class="joystick__face joystick__face--front">
-                            <div class="joystick-cliquable__top"><div></div></div>
-                            <div class="joystick-cliquable__bottom"><div></div></div>
-                            <div class="joystick-cliquable__left"><div></div></div>
-                            <div class="joystick-cliquable__right"><div></div></div>
+                            <div class="joystick-cliquable joystick-cliquable--top"><div></div></div>
+                            <div class="joystick-cliquable joystick-cliquable--bottom"><div></div></div>
+                            <div class="joystick-cliquable joystick-cliquable--left"><div></div></div>
+                            <div class="joystick-cliquable joystick-cliquable--right"><div></div></div>
                         </div>
     					<div class="joystick__face joystick__face--top"></div>
                         <div class="joystick__face joystick__face--bottom"></div>
@@ -157,6 +169,14 @@
 							<div class="relief">
                                 <div class="relief-interieur flex-col">
 									<div class="ecran"></div>
+
+                                    <div class="conteneur flex-col">
+                                        <div class="flex-row">
+                                            <div class="truc-noir"></div>
+                                            <div class="truc-noir"></div>
+                                        </div>
+                                        <div class="voyant-jaune"></div>
+                                    </div>
                                     <div class="flex-row">
                                         <div class="petit-ecran"></div>
                                         <div class="petit-ecran"></div>
@@ -229,7 +249,9 @@
                         <div class="bouton-carre btn-bleu bouton-carre-6 groupe-3d">
                             <div class="groupe-3d">
                                 <div class="bouton-carre__face bouton-carre__face--front">
-                                    <a href="https://github.com/geoffroy-luchez/Pokedex-CSS"><img src="./images/svg/github.svg" alt="Github"></a>
+                                    <a href="https://github.com/geoffroy-luchez/Pokedex-CSS" target="_blank">
+                                        <img src="./images/svg/github.svg" alt="Github">
+                                    </a>
                                 </div>
                                 <div class="bouton-carre__face bouton-carre__face--top"></div>
                                 <div class="bouton-carre__face bouton-carre__face--bottom"></div>
@@ -240,7 +262,7 @@
                         <div class="bouton-carre btn-bleu bouton-carre-7 groupe-3d">
                             <div class="groupe-3d">
                                 <div class="bouton-carre__face bouton-carre__face--front">
-                                    <a href="https://www.linkedin.com/in/geoffroy-l-703443b7/">
+                                    <a href="https://www.linkedin.com/in/geoffroy-l-703443b7/" target="_blank">
                                         <img src="./images/svg/linkedin.svg" alt="Linkedin">
                                     </a>
                                 </div>
@@ -253,7 +275,9 @@
                         <div class="bouton-carre btn-bleu bouton-carre-8 groupe-3d">
                             <div class="groupe-3d">
                                 <div class="bouton-carre__face bouton-carre__face--front">
-
+                                    <a href="https://codepen.io/geoffroy-luchez" target="_blank">
+                                        <img src="./images/svg/codepen.svg" alt="API">
+                                    </a>
                                 </div>
                                 <div class="bouton-carre__face bouton-carre__face--top"></div>
                                 <div class="bouton-carre__face bouton-carre__face--bottom"></div>
@@ -275,7 +299,7 @@
                         <div class="bouton-carre btn-bleu bouton-carre-10 groupe-3d">
                             <div class="groupe-3d">
                                 <div class="bouton-carre__face bouton-carre__face--front">
-                                    <a href="https://pokeapi.co/">
+                                    <a href="https://pokeapi.co/" target="_blank">
                                         <img src="./images/svg/server.svg" alt="API">
                                     </a>
                                 </div>
