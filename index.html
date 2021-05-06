@@ -6,32 +6,6 @@
         <title>Pokédex HANDY505</title>
     </head>
     <body>
-        <!--
-        <div class="ligne">
-
-            <p class="radio-group">
-                <label>
-                    <input type="radio" name="rotate-cube-side" value="front" checked /> front
-                </label>
-                <label>
-                    <input type="radio" name="rotate-cube-side" value="right" /> right
-                </label>
-                <label>
-                    <input type="radio" name="rotate-cube-side" value="back" /> back
-                </label>
-                <label>
-                    <input type="radio" name="rotate-cube-side" value="left" /> left
-                </label>
-                <label>
-                    <input type="radio" name="rotate-cube-side" value="top" /> top
-                </label>
-                <label>
-                    <input type="radio" name="rotate-cube-side" value="bottom" /> bottom
-                </label>
-            </p>
-        </div>
-        -->
-
         <div class="ligne">
             <div class="scene">
                 <div class="pokedex">
@@ -47,7 +21,7 @@
                                     </div>
                                     <!-- ECRAN VERT -->
                                     <div class="ecran-vert flex-center">
-                                        {{ message }}
+                                        {{ ecran_vert }}
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +42,7 @@
                             </div>
                             <!-- ECRAN PRINCIPAL -->
                             <div class="ecran-principal ecran flex-center">
-                                {{ message }}
+                                {{ ecran_principal }}
                             </div>
                             <div class="conteneur flex-row">
                                 <div class="voyant-rouge"></div>
@@ -90,10 +64,10 @@
 					<!-- Joystick -->
                     <div class="joystick groupe-3d">
     					<div class="joystick__face joystick__face--front">
-                            <div class="joystick-cliquable joystick-cliquable--top"><div></div></div>
-                            <div class="joystick-cliquable joystick-cliquable--bottom"><div></div></div>
-                            <div class="joystick-cliquable joystick-cliquable--left"><div></div></div>
-                            <div class="joystick-cliquable joystick-cliquable--right"><div></div></div>
+                            <div class="joystick-cliquable joystick-cliquable--top" @mousedown="pression_joystick( 'top' )" @mouseup="pression_joystick( null )" @mouseleave="pression_joystick( null )"><div></div></div>
+                            <div class="joystick-cliquable joystick-cliquable--bottom" @mousedown="pression_joystick( 'bottom' )" @mouseup="pression_joystick( null )" @mouseleave="pression_joystick( null )"><div></div></div>
+                            <div class="joystick-cliquable joystick-cliquable--left" @mousedown="pression_joystick( 'left' )" @mouseup="pression_joystick( null )" @mouseleave="pression_joystick( null )"><div></div></div>
+                            <div class="joystick-cliquable joystick-cliquable--right" @mousedown="pression_joystick( 'right' )" @mouseup="pression_joystick( null )" @mouseleave="pression_joystick( null )"><div></div></div>
                         </div>
     					<div class="joystick__face joystick__face--top"></div>
                         <div class="joystick__face joystick__face--bottom"></div>
@@ -134,7 +108,7 @@
 
                     <!-- Bouton noir -->
                     <div class="btn-noir groupe-3d">
-                        <div class="groupe-3d">
+                        <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                             <div class="btn-noir__face btn-noir__face--front">
                                 <div></div>
                             </div>
@@ -164,7 +138,7 @@
                         <div class="charniere__face charniere__face--back-right"></div>
                         <div class="charniere__face charniere__face--back-left"></div>
                         <!-- Partie secondaire -->
-                        <div class='partie-secondaire__face partie-secondaire__face--front'>
+                        <div class='partie-secondaire__face partie-secondaire__face--front' @click="ouverture()">
 							<!--  Extérieur -->
 							<div class="triangle"></div>
 							<div class="flex-center flex-col">
@@ -177,7 +151,7 @@
                                 <div class="relief-interieur flex-col">
                                     <!-- ECRAN SECONDAIRE -->
 									<div class="ecran ecran-secondaire flex-center">
-                                        {{ message }}
+                                        {{ ecran_secondaire }}
                                     </div>
 
                                     <div class="conteneur flex-col">
@@ -190,11 +164,11 @@
                                     <div class="flex-row">
                                         <!-- PETIT ECRAN 1 -->
                                         <div class="petit-ecran petit-ecran-gauche flex-center">
-                                            {{ message }}
+                                            {{ ecran_gauche }}
                                         </div>
                                         <!-- PETIT ECRAN 2 -->
                                         <div class="petit-ecran petit-ecran-droit flex-center">
-                                            {{ message }}
+                                            {{ ecran_droit }}
                                         </div>
                                     </div>
 								</div>
@@ -208,7 +182,7 @@
                         <div class='partie-secondaire__face partie-secondaire__face--top-right'></div>
                         <!-- Boutons bleus -->
                         <div class="bouton-carre btn-bleu bouton-carre-1 groupe-3d">
-                            <div class="groupe-3d">
+                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/rotate-ccw.svg" alt="Rotation sens anti-horaire">
                                 </div>
@@ -219,7 +193,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-bleu bouton-carre-2 groupe-3d">
-                            <div class="groupe-3d">
+                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/minus.svg" alt="Aucune rotation">
                                 </div>
@@ -230,7 +204,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-bleu bouton-carre-3 groupe-3d">
-                            <div class="groupe-3d">
+                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/rotate-cw.svg" alt="Rotation sens horaire">
                                 </div>
@@ -240,8 +214,8 @@
                                 <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
-                        <div class="bouton-carre btn-bleu bouton-carre-4 groupe-3d">
-                            <div class="groupe-3d">
+                        <div class="bouton-carre btn-bleu bouton-carre-4 groupe-3d" @click="fermeture()">
+                            <div class="groupe-3d" @mousedown="fermeture(); pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="lock bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/lock.svg" alt="Fermer le Pokédex">
                                 </div>
@@ -252,7 +226,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-bleu bouton-carre-5 groupe-3d">
-                            <div class="groupe-3d">
+                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/power.svg" alt="Power">
                                 </div>
@@ -263,7 +237,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-bleu bouton-carre-6 groupe-3d">
-                            <div class="groupe-3d">
+                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <a href="https://github.com/geoffroy-luchez/Pokedex-CSS" target="_blank">
                                         <img src="./images/svg/github.svg" alt="Github">
@@ -276,7 +250,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-bleu bouton-carre-7 groupe-3d">
-                            <div class="groupe-3d">
+                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <a href="https://www.linkedin.com/in/geoffroy-l-703443b7/" target="_blank">
                                         <img src="./images/svg/linkedin.svg" alt="Linkedin">
@@ -289,7 +263,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-bleu bouton-carre-8 groupe-3d">
-                            <div class="groupe-3d">
+                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <a href="https://codepen.io/geoffroy-luchez" target="_blank">
                                         <img src="./images/svg/codepen.svg" alt="API">
@@ -302,7 +276,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-bleu bouton-carre-9 groupe-3d">
-                            <div class="groupe-3d">
+                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/package.svg" alt="Sources">
                                 </div>
@@ -313,7 +287,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-bleu bouton-carre-10 groupe-3d">
-                            <div class="groupe-3d">
+                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <a href="https://pokeapi.co/" target="_blank">
                                         <img src="./images/svg/server.svg" alt="API">
@@ -326,7 +300,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-blanc bouton-carre-11 groupe-3d">
-                            <div class="groupe-3d">
+                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/check.svg" alt="Linkedin">
                                 </div>
@@ -337,7 +311,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-blanc bouton-carre-12 groupe-3d">
-                            <div class="groupe-3d">
+                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/return.svg" alt="Linkedin" height="25px">
                                 </div>
