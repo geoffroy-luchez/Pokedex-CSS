@@ -281,6 +281,11 @@ body {
     display: flex;
     align-items:flex-end;
 }
+.partie-blanche__face--front .conteneur {
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 30px;
+}
 .partie-principale__face--front .led-rouge {
     background-color: #ff9999;
     box-shadow: inset #006 0 -0.1px 2px, #ff9999 0 2px 10px;
@@ -315,6 +320,30 @@ body {
     background-image: url("images/led_jaune.png");
     background-size: 100%;
 }
+.partie-blanche__face--front .led-rouge {
+    background-color: red;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    margin: 11px;
+    border: 1px solid var( --couleur-secondaire );
+}
+.partie-blanche__face--front .voyant-rouge {
+    background-color: red;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin: 8px;
+    border: 1px solid var( --couleur-secondaire );
+}
+.partie-blanche__face--front .ligne {
+    background-color: black;
+    height: 1px;
+    width: 19px;
+    margin-top: 5px;
+    box-shadow: 0px 0px 4px 0.1px rgba(0, 0, 0, 0.5);
+}
+
 
 /* Ecrans */
 .partie-blanche__face--front .ecran {
@@ -322,7 +351,7 @@ body {
     filter: grayscale(100%);
     overflow: auto;
     height:130px; width:155px;
-    margin-top:30px; margin-left:30px;
+    margin-top:00px; margin-left:30px;
     background-color: #232323;
     border-radius: 5px;
 }
