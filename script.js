@@ -1,16 +1,10 @@
 var $ = window.jQuery;
 
 /* https://youtu.be/4kRqai4ZbHA */
-var son_boot = new Audio( 'sons/boot.mp3' );
-var son_bouton = new Audio( 'sons/bouton.mp3' );
 /* https://www.youtube.com/watch?v=88qRmxhqoBA */
-var son_bip = new Audio( 'sons/bip.mp3' );
 /* https://youtu.be/PBOpSZja-1A */
-var son_extinction = new Audio( 'sons/extinction.mp3' );
 /* https://youtu.be/q_uze6Jnv6M */
-var son_demarrage = new Audio( 'sons/demarrage.mp3' );
 /* https://youtu.be/TgOm3ewdXcc */
-var son_probleme = new Audio( 'sons/probleme.mp3' );
 
 /* --------
    Joystick
@@ -62,8 +56,17 @@ $( ".btn-noir" ).on( 'mousedown', function () {
 /* Fermture du Pokédex (clic sur le cadenas) */
 $( ".lock" ).on( 'click', function () {
     if ( $( ".pokedex" ).hasClass( "allume" ) ) {
+
+        /* Lumières */
         setTimeout( function () {
-            son_extinction.play();
+            $( ".led-rouge" ).removeClass( 'allume' );
+        }, 0 );
+        setTimeout( function () {
+            $( ".led-bleue" ).removeClass( 'allume' );
+        }, 500 );
+
+        setTimeout( function () {
+            play_F( 'sons/extinction.mp3' );
             $( ".pokedex" ).removeClass( "ouvert" );
             $( ".pokedex" ).removeClass( "allume" );
         }, 500 );
@@ -72,9 +75,18 @@ $( ".lock" ).on( 'click', function () {
 
 /* Ouverture du Pokédex (clic sur le clapet) */
 $( ".partie-secondaire__face--front" ).on( 'click', function () {
-    play_F( 'sons/boot.mp3' )
+    play_F( 'sons/boot.mp3' );
+
+    /* Lumières */
     setTimeout( function () {
-        /* play_F( 'sons/demarrage.mp3' ); */
+        $( ".led-rouge" ).addClass( 'allume' );
+    }, 2700 );
+    setTimeout( function () {
+        $( ".led-bleue" ).addClass( 'allume' );
+    }, 5500 );
+
+    setTimeout( function () {
+        /* Allumer le Pokedex */
         $( ".pokedex" ).addClass( "allume" );
     }, 5500 );
     $( '.pokedex' ).toggleClass( "ouvert" );
@@ -85,7 +97,6 @@ $( ".bouton-carre__face, .btn-noir__face" ).on( 'click', function () {
     if ( $( ".pokedex" ).hasClass( "allume" ) ) {
         play_F( 'sons/bip.mp3' );
     }
-
 } );
 $( ".joystick-cliquable" ).on( 'click', function () {
     if ( $( ".pokedex" ).hasClass( "allume" ) ) {
@@ -105,3 +116,39 @@ function play_F( file ) {
         this.parentNode.removeChild( this );
     }
 }
+
+/* VUEJS */
+var ecran_principal = new Vue( {
+    el: '.ecran-principal',
+    data: {
+        message: 'Principal !'
+    }
+} );
+
+var ecran_secondaire = new Vue( {
+    el: '.ecran-secondaire',
+    data: {
+        message: 'Secondaire !'
+    }
+} );
+
+var ecran_vert = new Vue( {
+    el: '.ecran-vert',
+    data: {
+        message: 'Vert !'
+    }
+} );
+
+var petit_ecran_gauche = new Vue( {
+    el: '.petit-ecran-gauche',
+    data: {
+        message: 'Gauche !'
+    }
+} );
+
+var petit_ecran_droit = new Vue( {
+    el: '.petit-ecran-droit',
+    data: {
+        message: 'Droit !'
+    }
+} );

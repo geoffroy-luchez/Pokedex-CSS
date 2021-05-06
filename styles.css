@@ -287,21 +287,27 @@ body {
     margin-right: 30px;
 }
 .partie-principale__face--front .led-rouge {
-    background-color: #ff9999;
-    box-shadow: inset #006 0 -0.1px 2px, #ff9999 0 2px 10px;
+    background-color: #cc0000;
     height:5px;
     width: 35px;
     border: 1px solid var( --couleur-secondaire );
     border-radius: 5px;
 }
+.partie-principale__face--front .led-rouge.allume {
+    background-color: #ff9999;
+    box-shadow: inset #006 0 -0.1px 2px, #ff9999 0 2px 10px;
+}
 .partie-principale__face--front .led-bleue {
-    background-color: #b4e6fd;
-    box-shadow: inset #006 0 -0.1px 1.5px, #b4e6fd 0 2px 10px;
+    background-color: #048ac8;
     height:5px;
     width: 35px;
     border: 1px solid var( --couleur-secondaire );
     margin-left: 20px;
     border-radius: 5px;
+}
+.partie-principale__face--front .led-bleue.allume {
+    background-color: #b4e6fd;
+    box-shadow: inset #006 0 -0.1px 1.5px, #b4e6fd 0 2px 10px;
 }
 .partie-secondaire__face--back .truc-noir {
     background-color: var( --noir-secondaire );
@@ -321,7 +327,7 @@ body {
     background-size: 100%;
 }
 .partie-blanche__face--front .led-rouge {
-    background-color: red;
+    background-color: #cc0000;
     height: 6px;
     width: 6px;
     border-radius: 50%;
@@ -329,7 +335,7 @@ body {
     border: 1px solid var( --couleur-secondaire );
 }
 .partie-blanche__face--front .voyant-rouge {
-    background-color: red;
+    background-color: #cc0000;
     height: 12px;
     width: 12px;
     border-radius: 50%;
@@ -349,7 +355,7 @@ body {
 .partie-blanche__face--front .ecran {
     box-shadow: inset 0 0 1rem black;
     filter: grayscale(100%);
-    overflow: auto;
+    overflow: hidden;
     height:130px; width:155px;
     margin-top:00px; margin-left:30px;
     background-color: #232323;
@@ -358,7 +364,7 @@ body {
 .partie-secondaire__face--back .ecran {
     box-shadow: inset 0 0 1rem black;
     filter: grayscale(100%);
-    overflow: auto;
+    overflow: hidden;
     height:75px; width:220px;
     margin-top:73px; margin-left:25px;
     background-color: #232323;
@@ -367,7 +373,7 @@ body {
 .partie-secondaire__face--back .petit-ecran {
     box-shadow: inset 0 0 1rem black;
     filter: grayscale(100%);
-    overflow: auto;
+    overflow: hidden;
     height:35px; width:96px;
     margin-top:35px; margin-left:27px;
     background-color: #232323;
@@ -375,11 +381,15 @@ body {
 }
 .partie-principale__face--front .ecran-vert {
     box-shadow: inset 0 0 0.6rem #101010;
-    overflow: auto;
+    overflow: hidden;
     height:50px; width:80px;
     margin-top:20px;
     background-color: #51ae5f;
     border-radius: 5px;
+}
+.ecran, .petit-ecran, .ecran-vert {
+    /* Couleur d'écriture sur les écrans */
+    color: white;
 }
 
 /* Joystick */

@@ -45,7 +45,10 @@
                                         <div class="led-rouge"></div>
                                         <div class="led-bleue"></div>
                                     </div>
-                                    <div class="ecran-vert"></div>
+                                    <!-- ECRAN VERT -->
+                                    <div class="ecran-vert flex-center">
+                                        {{ message }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -63,8 +66,9 @@
                                 <div class="led-rouge"></div>
                                 <div class="led-rouge"></div>
                             </div>
-                            <div class="ecran flex-center">
-
+                            <!-- ECRAN PRINCIPAL -->
+                            <div class="ecran-principal ecran flex-center">
+                                {{ message }}
                             </div>
                             <div class="conteneur flex-row">
                                 <div class="voyant-rouge"></div>
@@ -171,7 +175,10 @@
 							<!-- Intérieur -->
 							<div class="relief">
                                 <div class="relief-interieur flex-col">
-									<div class="ecran"></div>
+                                    <!-- ECRAN SECONDAIRE -->
+									<div class="ecran ecran-secondaire flex-center">
+                                        {{ message }}
+                                    </div>
 
                                     <div class="conteneur flex-col">
                                         <div class="flex-row">
@@ -181,8 +188,14 @@
                                         <div class="voyant-jaune"></div>
                                     </div>
                                     <div class="flex-row">
-                                        <div class="petit-ecran"></div>
-                                        <div class="petit-ecran"></div>
+                                        <!-- PETIT ECRAN 1 -->
+                                        <div class="petit-ecran petit-ecran-gauche flex-center">
+                                            {{ message }}
+                                        </div>
+                                        <!-- PETIT ECRAN 2 -->
+                                        <div class="petit-ecran petit-ecran-droit flex-center">
+                                            {{ message }}
+                                        </div>
                                     </div>
 								</div>
                             </div>
@@ -344,8 +357,10 @@
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="script.js"></script>
+
     <!-- VueJS version développement -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="http://localhost:35729/livereload.js"></script>
+
+    <script src="script.js"></script>
 </html>
