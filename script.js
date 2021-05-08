@@ -20,18 +20,59 @@ function play_F( file ) {
 }
 
 /* VUEJS */
+Vue.component( "ecran-principal__demarrage", { template: `
+    <div>
+        <p>Pokedex terminal<br>
+        (v1.0.0)</p>
+        <div class="barre-chargement">
+            <div></div>
+        </div>
+        <p>Démarrage en cours...</p>
+    </div>
+` } );
+Vue.component( "ecran-principal__extinction", { template: `
+    <p>Extinction en cours...<p>
+` } );
+Vue.component( "ecran-principal__menu", { template: `
+    <div class='flex-center'>
+        <p>Menu princpal</o>
+    </div>
+` } );
+
+Vue.component( "ecran-secondaire__demarrage", { template: "<div>Démarrage en cours...</div>" } );
+Vue.component( "ecran-secondaire__extinction", { template: "<div>Extinction en cours...</div>" } );
+Vue.component( "ecran-secondaire__menu", { template: "<div>Menu princpal</div>" } );
+
 var app = new Vue( {
     el: '.pokedex',
     data: {
-        ecran_principal: 'Principal !',
-        ecran_secondaire: 'Secondaire !',
-        ecran_gauche: 'Gauche !',
-        ecran_droit: 'Droit !',
-        ecran_vert: 'Vert !'
+        etat: 'eteint',
+        boutons_bleus: [
+            "111", "222", "333"
+        ],
+        ecran_secondaire: '',
+        ecran_gauche: '',
+        ecran_droit: '',
+        ecran_vert: ''
+    },
+    computed: {
+        ecran_principal_actuel: function () {
+            if ( this.etat != 'eteint' ) {
+                return "ecran-principal__" + this.etat;
+            }
+        },
+        ecran_secondaire_actuel: function () {
+            if ( this.etat != 'eteint' ) {
+                return "ecran-principal__" + this.etat;
+            }
+        }
     },
     methods: {
         ouverture() {
             if ( !$( ".pokedex" ).hasClass( "ouvert" ) && !$( ".pokedex" ).hasClass( "bouge" ) ) {
+
+                this.etat = 'demarrage';
+
                 $( ".pokedex" ).addClass( "bouge" )
                 /* Son */
                 play_F( 'sons/boot.mp3' );
@@ -43,17 +84,25 @@ var app = new Vue( {
                     $( ".led-bleue" ).addClass( 'allume' );
                 }, 5500 );
                 /* Mouvement */
-                setTimeout( function () {
+                /* ( utilisation d'une fonction fléchée, sinon "this" ne pointe pas sur l'instance Vue mais sur la fonction annonyme ) */
+                setTimeout( () => {
+
+                    this.etat = 'menu';
+
                     /* Allumer le Pokedex */
                     $( ".pokedex" ).addClass( "allume" );
                     $( '.pokedex' ).removeClass( "bouge" );
+
                 }, 5500 );
                 $( '.pokedex' ).addClass( "ouvert" );
             }
         },
         fermeture() {
             if ( $( ".pokedex" ).hasClass( "ouvert" ) && $( ".pokedex" ).hasClass( "allume" ) && !$( ".pokedex" ).hasClass( "bouge" ) ) {
-                console.log( 'ferme' );
+
+                this.etat = 'extinction';
+
+                $( ".pokedex" ).removeClass( "ouvert" );
                 $( ".pokedex" ).addClass( "bouge" )
                 /* Lumières */
                 setTimeout( function () {
@@ -63,9 +112,12 @@ var app = new Vue( {
                     $( ".led-bleue" ).removeClass( 'allume' );
                 }, 500 );
                 /* Son et mouvements */
-                setTimeout( function () {
+                /* ( utilisation d'une fonction fléchée, sinon "this" ne pointe pas sur l'instance Vue mais sur la fonction annonyme ) */
+                setTimeout( () => {
+
+                    this.etat = 'eteint';
+
                     play_F( 'sons/extinction.mp3' );
-                    $( ".pokedex" ).removeClass( "ouvert" );
                     $( ".pokedex" ).removeClass( "allume" );
                     $( ".pokedex" ).removeClass( "bouge" );
                 }, 500 );
@@ -111,5 +163,4 @@ var app = new Vue( {
             console.log( 'back' );
         }
     }
-
 } );

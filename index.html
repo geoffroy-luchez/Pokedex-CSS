@@ -41,8 +41,8 @@
                                 <div class="led-rouge"></div>
                             </div>
                             <!-- ECRAN PRINCIPAL -->
-                            <div class="ecran-principal ecran flex-center">
-                                {{ ecran_principal }}
+                            <div class="ecran-principal ecran">
+                                <component v-bind:is="ecran_principal_actuel"></component>
                             </div>
                             <div class="conteneur flex-row">
                                 <div class="voyant-rouge"></div>
