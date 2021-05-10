@@ -16,7 +16,13 @@
     /* Couleurs de test */
     --transp: rgba(117, 190, 218, 0.5);
 }
-
+p {
+    margin-top: 8px;
+}
+ul {
+    margin-top: 5px;
+    padding-left: 15px;
+}
 a {
     width: 100%;
     height: 100%
@@ -395,6 +401,12 @@ body {
 .ecran > *, .petit-ecran > *, .ecran-vert > * {
     margin-left: 7px;
 }
+.ecran img {
+    margin-left: 5px;
+    height:15px;
+    position:absolute;
+    filter: brightness(0) invert(1);
+}
 
 /* Trucs dans les écrans */
 .barre-chargement {
@@ -408,6 +420,40 @@ body {
     height: 100%;
     animation: elargissement 5.5s linear forwards; /* "forwards" de maintenir dans l'état final de l'animation, à la fin de celle-ci */
 }
+.lignes_progressives {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    animation: lignes 5.5s linear forwards; /* "forwards" de maintenir dans l'état final de l'animation, à la fin de celle-ci */
+}
+.menu-principal__titre p {
+    margin-bottom: 4px;
+}
+.menu-principal__titre {
+    margin-right: 10px;
+    border-bottom: 1px solid white;
+}
+.menu-principal__conteneur {
+    margin-top:5px;
+    margin-right: 10px;
+}
+.menu-principal__ligne {
+    margin-bottom: 4px;
+    background-color: red;
+    height: 20px;
+    width: 100%
+}
+.menu-principal__ligne.active {
+    margin-bottom: 4px;
+    background-color: yellow;
+    color: blue;
+    height: 20px;
+    width: 100%
+}
+.ecran-secondaire__touches p {
+    margin-bottom: 0px;
+}
+
 
 /* Joystick */
 .joystick__face--front .joystick-cliquable--top {
@@ -475,6 +521,10 @@ body {
 @keyframes elargissement {
 	0% { width: 0% }
 	100% { width: 100% }
+}
+@keyframes lignes {
+	0% { -webkit-line-clamp: 1; }
+	100% { -webkit-line-clamp: 4; }
 }
 
 /* ----------------------------------------------

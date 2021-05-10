@@ -42,7 +42,31 @@
                             </div>
                             <!-- ECRAN PRINCIPAL -->
                             <div class="ecran-principal ecran">
-                                <component v-bind:is="ecran_principal_actuel"></component>
+                                <!-- Démarrage -->
+                                <div v-if="etat === 'demarrage'">
+                                    <p>Pokédex HANDY505<br>
+                                    (v1.0.0)</p>
+                                    <div class="barre-chargement">
+                                        <div></div>
+                                    </div>
+                                    <p>Démarrage en cours...</p>
+                                </div>
+                                <!-- Extinction -->
+                                <div v-else-if="etat === 'extinction'">
+                                    <div>
+                                        <p>Extinction en cours...<p>
+                                    </div>
+                                </div>
+                                <!-- Menu -->
+                                <div v-else-if="etat === 'menu'">
+                                    <div class='flex-center menu-principal__titre'>
+                                        <p>Menu princpal</p>
+                                    </div>
+                                    <div class="menu-principal__conteneur">
+                                        <div class="menu-principal__ligne flex-center" v-for="( item, index ) in menu"  v-bind:class="{ 'active' : menu_actif == index }"> {{ item }}</div>
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="conteneur flex-row">
                                 <div class="voyant-rouge"></div>
@@ -150,10 +174,33 @@
 							<div class="relief">
                                 <div class="relief-interieur flex-col">
                                     <!-- ECRAN SECONDAIRE -->
-									<div class="ecran ecran-secondaire flex-center">
-                                        {{ ecran_secondaire }}
-                                    </div>
+									<div class="ecran ecran-secondaire">
+                                        <!-- Démarrage -->
+                                        <div v-if="etat === 'demarrage'">
+                                            <p class='lignes_progressives'>
+                                                POKEBIOS (C) Pokemon, Inc.<br><br>
+                                                Total Memory: 128 MiB<br>
+                                                CPU: PikAMD Am486 DX4-100<br>
+                                            </p>
+                                        </div>
+                                        <!-- Extinction -->
+                                        <div v-else-if="etat === 'extinction'">
+                                            <div class="flex-center">
+                                                <p>Extinction en cours...<p>
+                                            </div>
+                                        </div>
+                                        <!-- Menu -->
+                                        <div v-else-if="etat === 'menu'" class="ecran-secondaire__touches">
+                                            <p> Bienvenue sur le Pokedex !
+                                                <ul>
+                                                    <li>Navigez avec les flèches</li>
+                                                    <li>Validez avec <img src="./images/svg/check.svg" alt="Valider"></li>
+                                                    <li>Annulez avec <img src="./images/svg/return.svg" alt="Retour"></li>
+                                                </ul>
+                                            </p>
+                                        </div>
 
+                                    </div>
                                     <div class="conteneur flex-col">
                                         <div class="flex-row">
                                             <div class="truc-noir"></div>
@@ -226,7 +273,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-bleu bouton-carre-5 groupe-3d">
-                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
+                            <div class="groupe-3d" @mousedown="power(); pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/power.svg" alt="Power">
                                 </div>
@@ -322,10 +369,10 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
-
     </body>
 
     <!-- Jquery -->
