@@ -21,7 +21,9 @@
                                     </div>
                                     <!-- ECRAN VERT -->
                                     <div class="ecran-vert flex-center">
-                                        {{ ecran_vert }}
+                                        n° {{ ( this.menu_pokemon.page_active * 4 + this.menu_pokemon.menu_actif ) + 1 }}
+                                        <br>
+                                        sur {{ this.menu_pokemon.nombre_max }}
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +65,29 @@
                                         <p>Menu princpal</p>
                                     </div>
                                     <div class="menu-principal__conteneur">
-                                        <div class="menu-principal__ligne flex-center" v-for="( item, index ) in menu"  v-bind:class="{ 'active' : menu_actif == index }"> {{ item }}</div>
+                                        <div class="menu-principal__ligne flex-gauche" v-for="( item, index ) in menu"  v-bind:class="{ 'active' : menu_actif == index }"> <div> {{ item }} </div></div>
+                                    </div>
+                                </div>
+                                <!-- Pokémons -->
+                                <div v-else-if="etat === 'pokemons'">
+                                    <div class='flex-center menu-principal__titre'>
+                                        <p>Pokémons</p>
+                                    </div>
+                                    <div class="menu-principal__conteneur">
+                                        <div class="menu-principal__ligne flex-gauche" v-for="( item, index ) in menu_pokemon.pokemons"  v-bind:class="{ 'active' : menu_pokemon.menu_actif == index }"> <div> {{ item.name }} </div></div>
+                                    </div>
+                                </div>
+                                <!-- Pokémon -->
+                                <div v-else-if="etat === 'pokemon'" class="flex-center">
+                                    <img v-bind:src='pokemon.image' width="90%">
+                                </div>
+                                <!-- Chargement -->
+                                <div v-else-if="etat === 'chargement'">
+                                    <div class='flex-center menu-principal__titre'>
+                                        <p>Pokémons</p>
+                                    </div>
+                                    <div class="menu-principal__conteneur">
+                                        Chargement...
                                     </div>
                                 </div>
 
@@ -132,7 +156,7 @@
 
                     <!-- Bouton noir -->
                     <div class="btn-noir groupe-3d">
-                        <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
+                        <div class="groupe-3d" @mousedown="pression( 'ok' ); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                             <div class="btn-noir__face btn-noir__face--front">
                                 <div></div>
                             </div>
@@ -199,6 +223,16 @@
                                                 </ul>
                                             </p>
                                         </div>
+                                        <!-- Pokémon -->
+                                        <div v-else-if="etat === 'pokemon'" class="ecran-secondaire__stats">
+                                            <p class="flex-center"><b>{{ pokemon.nom }}</b></p>
+                                            <div class="grille">
+                                                <div><b>PDV :</b> {{ pokemon.stats[0].base_stat }}</div>
+                                                <div><b>ATK :</b> {{ pokemon.stats[1].base_stat }}</div>
+                                                <div><b>DEF :</b> {{ pokemon.stats[2].base_stat }}</div>
+                                                <div><b>VIT :</b> {{ pokemon.stats[5].base_stat }}</div>
+                                            </div>
+                                        </div>
 
                                     </div>
                                     <div class="conteneur flex-col">
@@ -211,11 +245,11 @@
                                     <div class="flex-row">
                                         <!-- PETIT ECRAN 1 -->
                                         <div class="petit-ecran petit-ecran-gauche flex-center">
-                                            {{ ecran_gauche }}
+                                            {{ etat }}
                                         </div>
                                         <!-- PETIT ECRAN 2 -->
                                         <div class="petit-ecran petit-ecran-droit flex-center">
-                                            {{ ecran_droit }}
+                                            {{ menu_pokemon.menu_actif }} - {{ menu_pokemon.page_active }}
                                         </div>
                                     </div>
 								</div>
@@ -347,9 +381,9 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-blanc bouton-carre-11 groupe-3d">
-                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
+                            <div class="groupe-3d" @mousedown="pression( 'ok' ); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
-                                    <img src="./images/svg/check.svg" alt="Linkedin">
+                                    <img src="./images/svg/check.svg" alt="Ok">
                                 </div>
                                 <div class="bouton-carre__face bouton-carre__face--top"></div>
                                 <div class="bouton-carre__face bouton-carre__face--bottom"></div>
@@ -358,9 +392,9 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-blanc bouton-carre-12 groupe-3d">
-                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
+                            <div class="groupe-3d" @mousedown="pression( 'retour' ); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
-                                    <img src="./images/svg/return.svg" alt="Linkedin" height="25px">
+                                    <img src="./images/svg/return.svg" alt="Retour" height="25px">
                                 </div>
                                 <div class="bouton-carre__face bouton-carre__face--top"></div>
                                 <div class="bouton-carre__face bouton-carre__face--bottom"></div>

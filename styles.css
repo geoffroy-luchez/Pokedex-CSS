@@ -31,11 +31,12 @@ body {
     user-select: none;
     font-family: verdana;
     font-size: 12px;
-    background: var( --couleur-fond );
     /*
+    background: var( --couleur-fond );
+    */
     background-image: url("https://d.furaffinity.net/art/blazingifrit/1475361156/1475361156.blazingifrit_zoruaeevee_background.jpg");
     background-size: cover;
-    */
+
 }
 
 /* SCENE */
@@ -400,8 +401,10 @@ body {
 }
 .ecran > *, .petit-ecran > *, .ecran-vert > * {
     margin-left: 7px;
+    margin-right: 7px;
 }
-.ecran img {
+/* Permet de mettre en blanc les svg de tuto de touches de l'écran secondaire */
+.ecran-secondaire img {
     margin-left: 5px;
     height:15px;
     position:absolute;
@@ -430,18 +433,23 @@ body {
     margin-bottom: 4px;
 }
 .menu-principal__titre {
-    margin-right: 10px;
     border-bottom: 1px solid white;
 }
 .menu-principal__conteneur {
     margin-top:5px;
-    margin-right: 10px;
 }
 .menu-principal__ligne {
+    display: block;
     margin-bottom: 4px;
     background-color: red;
     height: 20px;
-    width: 100%
+    width: 100%;
+}
+.menu-principal__ligne div {
+    margin-left: 5px;
+}
+.menu-principal__ligne div::first-letter {
+    text-transform: uppercase;
 }
 .menu-principal__ligne.active {
     margin-bottom: 4px;
@@ -453,7 +461,14 @@ body {
 .ecran-secondaire__touches p {
     margin-bottom: 0px;
 }
-
+.ecran-secondaire__stats > .grille {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows:auto;
+}
+.ecran-secondaire__stats > p {
+    text-transform: uppercase;
+}
 
 /* Joystick */
 .joystick__face--front .joystick-cliquable--top {
@@ -598,6 +613,11 @@ body {
 	display: flex;
     align-items: center;
 	justify-content: center;
+}
+.flex-gauche {
+	display: flex;
+    align-items: center;
+	justify-content:flex-start;
 }
 .flex-col {
 	display: flex;
