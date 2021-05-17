@@ -578,6 +578,18 @@ body {
     box-shadow: none;
 }
 
+/*
+    Caméra autour du Pokédex
+*/
+.pokedex.ouvert-gauche {
+    /* Repositionnement du Pokédex */
+    transform: translateY( -200px ) translateZ( 200px ) translateX(-160px) rotateY(50deg) rotateX(10deg) rotateZ(00deg);
+}
+.pokedex.ouvert-droite {
+    /* Repositionnement du Pokédex */
+    transform: translateY( -200px ) translateZ( 200px ) translateX(-90px) rotateY(-20deg) rotateX(10deg) rotateZ(00deg);
+}
+
 /* ----------------------
    Mouvements des boutons
    ---------------------- */

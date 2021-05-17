@@ -81,6 +81,49 @@
                                 <div v-else-if="etat === 'pokemon'" class="flex-center">
                                     <img v-bind:src='pokemon.image' width="90%">
                                 </div>
+
+                                <!-- Types -->
+                                <div v-else-if="etat === 'types'">
+                                    <div class='flex-center menu-principal__titre'>
+                                        <p>Types</p>
+                                    </div>
+                                    <div class="menu-principal__conteneur">
+                                        <div class="menu-principal__ligne flex-gauche" v-for="( item, index ) in menu_types.types"  v-bind:class="{ 'active' : menu_types.menu_actif == index }"> <div> {{ item.name }} </div></div>
+                                    </div>
+                                </div>
+                                <!-- Type -->
+                                <div v-else-if="etat === 'type'" class="flex-center">
+
+                                </div>
+
+                                <!-- Favoris -->
+                                <div v-else-if="etat === 'favoris'">
+                                    <div class='flex-center menu-principal__titre'>
+                                        <p>Pokémons favoris</p>
+                                    </div>
+                                    <div class="menu-principal__conteneur">
+                                        <div class="menu-principal__ligne flex-gauche" v-for="( item, index ) in menu_favoris.pokemons"  v-bind:class="{ 'active' : menu_favoris.menu_actif == index }"> <div> {{ item.name }} </div></div>
+                                    </div>
+                                </div>
+                                <!-- Favori -->
+                                <div v-else-if="etat === 'favori'" class="flex-center">
+
+                                </div>
+
+                                <!-- Baies -->
+                                <div v-else-if="etat === 'baies'">
+                                    <div class='flex-center menu-principal__titre'>
+                                        <p>Baies</p>
+                                    </div>
+                                    <div class="menu-principal__conteneur">
+                                        <div class="menu-principal__ligne flex-gauche" v-for="( item, index ) in menu_baies.baies"  v-bind:class="{ 'active' : menu_baies.menu_actif == index }"> <div> {{ item.name }} </div></div>
+                                    </div>
+                                </div>
+                                <!-- Type -->
+                                <div v-else-if="etat === 'baie'" class="flex-center">
+
+                                </div>
+
                                 <!-- Chargement -->
                                 <div v-else-if="etat === 'chargement'">
                                     <div class='flex-center menu-principal__titre'>
@@ -214,7 +257,7 @@
                                             </div>
                                         </div>
                                         <!-- Menu -->
-                                        <div v-else-if="etat === 'menu'" class="ecran-secondaire__touches">
+                                        <div v-else-if="etat === 'menu' || etat === 'pokemons'" class="ecran-secondaire__touches">
                                             <p> Bienvenue sur le Pokedex !
                                                 <ul>
                                                     <li>Navigez avec les flèches</li>
@@ -263,7 +306,7 @@
                         <div class='partie-secondaire__face partie-secondaire__face--top-right'></div>
                         <!-- Boutons bleus -->
                         <div class="bouton-carre btn-bleu bouton-carre-1 groupe-3d">
-                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
+                            <div class="groupe-3d" @mousedown="camera('gauche'); pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/rotate-ccw.svg" alt="Rotation sens anti-horaire">
                                 </div>
@@ -274,7 +317,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-bleu bouton-carre-2 groupe-3d">
-                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
+                            <div class="groupe-3d" @mousedown="camera('centre'); pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/minus.svg" alt="Aucune rotation">
                                 </div>
@@ -285,7 +328,7 @@
                             </div>
                         </div>
                         <div class="bouton-carre btn-bleu bouton-carre-3 groupe-3d">
-                            <div class="groupe-3d" @mousedown="pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
+                            <div class="groupe-3d" @mousedown="camera('droite'); pression(); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/rotate-cw.svg" alt="Rotation sens horaire">
                                 </div>
@@ -380,18 +423,8 @@
                                 <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
+
                         <div class="bouton-carre btn-blanc bouton-carre-11 groupe-3d">
-                            <div class="groupe-3d" @mousedown="pression( 'ok' ); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
-                                <div class="bouton-carre__face bouton-carre__face--front">
-                                    <img src="./images/svg/check.svg" alt="Ok">
-                                </div>
-                                <div class="bouton-carre__face bouton-carre__face--top"></div>
-                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
-                                <div class="bouton-carre__face bouton-carre__face--left"></div>
-                                <div class="bouton-carre__face bouton-carre__face--right"></div>
-                            </div>
-                        </div>
-                        <div class="bouton-carre btn-blanc bouton-carre-12 groupe-3d">
                             <div class="groupe-3d" @mousedown="pression( 'retour' ); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
                                 <div class="bouton-carre__face bouton-carre__face--front">
                                     <img src="./images/svg/return.svg" alt="Retour" height="25px">
@@ -402,6 +435,18 @@
                                 <div class="bouton-carre__face bouton-carre__face--right"></div>
                             </div>
                         </div>
+                        <div class="bouton-carre btn-blanc bouton-carre-12 groupe-3d">
+                            <div class="groupe-3d" @mousedown="pression( 'ok' ); $event.currentTarget.classList.add( 'btn-enfonce' )" @mouseup="$event.currentTarget.classList.remove( 'btn-enfonce' )" @mouseleave="$event.currentTarget.classList.remove( 'btn-enfonce' )">
+                                <div class="bouton-carre__face bouton-carre__face--front">
+                                    <img src="./images/svg/check.svg" alt="Ok">
+                                </div>
+                                <div class="bouton-carre__face bouton-carre__face--top"></div>
+                                <div class="bouton-carre__face bouton-carre__face--bottom"></div>
+                                <div class="bouton-carre__face bouton-carre__face--left"></div>
+                                <div class="bouton-carre__face bouton-carre__face--right"></div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>

@@ -46,7 +46,7 @@ var app = new Vue( {
     data: {
         etat: 'eteint',
         menu: [
-            "Tous les pokémons", "Pokémons par type", "Pokémons favoris", "Liste des baies"
+            "Pokémons", "Types", "Pokémons favoris", "Baies"
         ],
         menu_actif: 0,
         menu_pokemon: {
@@ -55,9 +55,7 @@ var app = new Vue( {
             page_active: 0,
             nombre_max: 0,
             page_prec: null,
-            page_suiv: null,
-            pokemons_type: null,
-            pokemons_liste: null
+            page_suiv: null
         },
         pokemon: {
             nom: null,
@@ -65,21 +63,82 @@ var app = new Vue( {
             stats: null,
             types: null
         },
+        menu_baies: {
+            baies: [],
+            menu_actif: 0,
+            page_active: 0,
+            nombre_max: 0,
+            page_prec: null,
+            page_suiv: null
+        },
+        menu_types: {
+            types: [],
+            menu_actif: 0,
+            page_active: 0,
+            page_prec: null,
+            page_suiv: null
+        },
+        menu_favoris: {
+            pokemons: [],
+            menu_actif: 0,
+            page_active: 0,
+            nombre_max: 0,
+            page_prec: null,
+            page_suiv: null
+        },
         ecran_secondaire: '',
         ecran_gauche: '',
         ecran_droit: '',
         ecran_vert: ''
     },
     methods: {
-        majPokemons() {
+        camera( sens ) {
+            if ( sens == "gauche" ) {
+                $( ".pokedex" ).removeClass( "ouvert-droite" );
+                $( ".pokedex" ).addClass( "ouvert-gauche" );
+            } else if ( sens == "droite" ) {
+                $( ".pokedex" ).removeClass( "ouvert-gauche" );
+                $( ".pokedex" ).addClass( "ouvert-droite" );
+            } else {
+                $( ".pokedex" ).removeClass( "ouvert-gauche" );
+                $( ".pokedex" ).removeClass( "ouvert-droite" );
+            }
+        },
+        getTypes() {
             /* Mettre l'écran en chargement en attendant de revevoir le retour de l'API */
             let save_etat = this.etat;
             this.etat = 'chargement';
-
+            /* ( utilisation d'une fonction fléchée, sinon "this" ne pointe pas sur l'instance Vue mais sur la fonction annonyme ) */
+            getAPI( 'https://pokeapi.co/api/v2/type?limit=4&offset=' + ( this.menu_types.page_active * 4 ) ).then( ( reponse ) => {
+                let reponse_json = JSON.parse( reponse );
+                /* Récupération des valeurs */
+                this.menu_types.types = reponse_json.results;
+                this.menu_types.page_prec = reponse_json.previous;
+                this.menu_types.page_suiv = reponse_json.next;
+                this.menu_types.nombre_max = reponse_json.count;
+                /* Arrêter le chargement */
+                this.etat = save_etat;
+            } );
+        },
+        getType() {
+            /* Mettre l'écran en chargement en attendant de revevoir le retour de l'API */
+            let save_etat = this.etat;
+            this.etat = 'chargement';
+            /* ( utilisation d'une fonction fléchée, sinon "this" ne pointe pas sur l'instance Vue mais sur la fonction annonyme ) */
+            getAPI( 'https://pokeapi.co/api/v2/pokemon?limit=4&offset=' + ( this.menu_types.page_active * 4 ) ).then( ( reponse ) => {
+                let reponse_json = JSON.parse( reponse );
+                /* Récupération des valeurs */
+                /* Arrêter le chargement */
+                this.etat = save_etat;
+            } );
+        },
+        getPokemons() {
+            /* Mettre l'écran en chargement en attendant de revevoir le retour de l'API */
+            let save_etat = this.etat;
+            this.etat = 'chargement';
             /* ( utilisation d'une fonction fléchée, sinon "this" ne pointe pas sur l'instance Vue mais sur la fonction annonyme ) */
             getAPI( 'https://pokeapi.co/api/v2/pokemon?limit=4&offset=' + ( this.menu_pokemon.page_active * 4 ) ).then( ( reponse ) => {
                 let reponse_json = JSON.parse( reponse );
-
                 /* Récupération des valeurs */
                 this.menu_pokemon.pokemons = reponse_json.results;
                 this.menu_pokemon.page_prec = reponse_json.previous;
@@ -93,18 +152,43 @@ var app = new Vue( {
             /* Mettre l'écran en chargement en attendant de revevoir le retour de l'API */
             let save_etat = this.etat;
             this.etat = 'chargement';
-
             let nom_pokemon_courant = this.menu_pokemon.pokemons[ this.menu_pokemon.menu_actif ].name;
             /* ( utilisation d'une fonction fléchée, sinon "this" ne pointe pas sur l'instance Vue mais sur la fonction annonyme ) */
             getAPI( 'https://pokeapi.co/api/v2/pokemon/' + nom_pokemon_courant ).then( ( reponse ) => {
                 let reponse_json = JSON.parse( reponse );
-
                 /* Récupération des valeurs */
                 this.pokemon.nom = reponse_json.name;
                 this.pokemon.image = reponse_json.sprites.other[ 'official-artwork' ].front_default;
                 this.pokemon.stats = reponse_json.stats;
                 this.pokemon.types = reponse_json.types;
-
+                /* Arrêter le chargement */
+                this.etat = save_etat;
+            } );
+        },
+        getBaies() {
+            /* Mettre l'écran en chargement en attendant de revevoir le retour de l'API */
+            let save_etat = this.etat;
+            this.etat = 'chargement';
+            /* ( utilisation d'une fonction fléchée, sinon "this" ne pointe pas sur l'instance Vue mais sur la fonction annonyme ) */
+            getAPI( 'https://pokeapi.co/api/v2/berry?limit=4&offset=' + ( this.menu_baies.page_active * 4 ) ).then( ( reponse ) => {
+                let reponse_json = JSON.parse( reponse );
+                /* Récupération des valeurs */
+                this.menu_baies.baies = reponse_json.results;
+                this.menu_baies.page_prec = reponse_json.previous;
+                this.menu_baies.page_suiv = reponse_json.next;
+                this.menu_baies.nombre_max = reponse_json.count;
+                /* Arrêter le chargement */
+                this.etat = save_etat;
+            } );
+        },
+        getBaie() {
+            /* Mettre l'écran en chargement en attendant de revevoir le retour de l'API */
+            let save_etat = this.etat;
+            this.etat = 'chargement';
+            /* ( utilisation d'une fonction fléchée, sinon "this" ne pointe pas sur l'instance Vue mais sur la fonction annonyme ) */
+            getAPI( 'https://pokeapi.co/api/v2/pokemon?limit=4&offset=' + ( this.menu_baies.page_active * 4 ) ).then( ( reponse ) => {
+                let reponse_json = JSON.parse( reponse );
+                /* Récupération des valeurs */
                 /* Arrêter le chargement */
                 this.etat = save_etat;
             } );
@@ -135,6 +219,9 @@ var app = new Vue( {
         },
         fermeture() {
             if ( $( ".pokedex" ).hasClass( "ouvert" ) && $( ".pokedex" ).hasClass( "allume" ) && !$( ".pokedex" ).hasClass( "bouge" ) ) {
+
+                this.camera( 'reset' );
+
                 this.etat = 'extinction';
                 $( ".pokedex" ).removeClass( "ouvert" );
                 $( ".pokedex" ).addClass( "bouge" )
@@ -210,20 +297,25 @@ var app = new Vue( {
                         if ( this.menu_actif == '0' ) {
                             /* Tous les pokémons */
                             this.etat = 'pokemons';
-                            this.majPokemons();
+                            this.getPokemons();
                         } else if ( this.menu_actif == '1' ) {
                             /* Type */
+                            this.etat = 'types';
+                            this.getTypes();
                         } else if ( this.menu_actif == '2' ) {
                             /* Favoris */
+                            this.etat = 'favoris';
+
                         } else if ( this.menu_actif == '3' ) {
                             /* Baies */
+                            this.etat = 'baies';
+                            this.getBaies();
                         }
                         play_F( 'sons/bip.mp3' );
                     } else if ( this.etat == 'pokemons' ) {
                         this.etat = 'pokemon';
                         this.getPokemon();
                         play_F( 'sons/bip.mp3' );
-                        play_F( 'sons/voix.mp3' );
                     } else if ( this.etat == 'pokemon' ) {
                         play_F( 'sons/probleme.mp3' );
                     }
@@ -233,7 +325,7 @@ var app = new Vue( {
                     /* Si on est sur le menu principal */
                     if ( this.etat == 'menu' ) {
                         play_F( 'sons/probleme.mp3' );
-                    } else if ( this.etat == 'pokemons' ) {
+                    } else if ( this.etat == 'pokemons' || this.etat == 'types' || this.etat == 'favoris' || this.etat == 'baies' ) {
                         this.etat = 'menu';
                         play_F( 'sons/bip.mp3' );
                     } else if ( this.etat == 'pokemon' ) {
@@ -262,7 +354,6 @@ var app = new Vue( {
                         }
 
                     } else if ( this.etat == 'pokemons' ) {
-
                         if ( this.menu_pokemon.menu_actif > 0 ) {
                             play_F( 'sons/pch.mp3' );
                             this.menu_pokemon.menu_actif--;
@@ -271,8 +362,38 @@ var app = new Vue( {
                             if ( this.menu_pokemon.page_prec != null ) {
                                 play_F( 'sons/pch.mp3' );
                                 this.menu_pokemon.page_active--;
-                                this.majPokemons();
+                                this.getPokemons();
                                 this.menu_pokemon.menu_actif = 3;
+                            } else {
+                                play_F( 'sons/probleme.mp3' );
+                            }
+                        }
+                    } else if ( this.etat == 'types' ) {
+                        if ( this.menu_types.menu_actif > 0 ) {
+                            play_F( 'sons/pch.mp3' );
+                            this.menu_types.menu_actif--;
+                        } else {
+                            /* Changement de page si possible */
+                            if ( this.menu_types.page_prec != null ) {
+                                play_F( 'sons/pch.mp3' );
+                                this.menu_types.page_active--;
+                                this.getTypes();
+                                this.menu_types.menu_actif = 3;
+                            } else {
+                                play_F( 'sons/probleme.mp3' );
+                            }
+                        }
+                    } else if ( this.etat == 'baies' ) {
+                        if ( this.menu_baies.menu_actif > 0 ) {
+                            play_F( 'sons/pch.mp3' );
+                            this.menu_baies.menu_actif--;
+                        } else {
+                            /* Changement de page si possible */
+                            if ( this.menu_baies.page_prec != null ) {
+                                play_F( 'sons/pch.mp3' );
+                                this.menu_baies.page_active--;
+                                this.getBaies();
+                                this.menu_baies.menu_actif = 3;
                             } else {
                                 play_F( 'sons/probleme.mp3' );
                             }
@@ -294,7 +415,6 @@ var app = new Vue( {
                             play_F( 'sons/probleme.mp3' );
                         }
                     } else if ( this.etat == 'pokemons' ) {
-
                         if ( this.menu_pokemon.menu_actif < 3 ) {
                             play_F( 'sons/pch.mp3' );
                             this.menu_pokemon.menu_actif++;
@@ -303,8 +423,38 @@ var app = new Vue( {
                             if ( this.menu_pokemon.page_suiv != null ) {
                                 play_F( 'sons/pch.mp3' );
                                 this.menu_pokemon.page_active++;
-                                this.majPokemons();
+                                this.getPokemons();
                                 this.menu_pokemon.menu_actif = 0;
+                            } else {
+                                play_F( 'sons/probleme.mp3' );
+                            }
+                        }
+                    } else if ( this.etat == 'types' ) {
+                        if ( this.menu_types.menu_actif < 3 ) {
+                            play_F( 'sons/pch.mp3' );
+                            this.menu_types.menu_actif++;
+                        } else {
+                            /* Changement de page si possible */
+                            if ( this.menu_types.page_suiv != null ) {
+                                play_F( 'sons/pch.mp3' );
+                                this.menu_types.page_active++;
+                                this.getTypes();
+                                this.menu_types.menu_actif = 0;
+                            } else {
+                                play_F( 'sons/probleme.mp3' );
+                            }
+                        }
+                    } else if ( this.etat == 'baies' ) {
+                        if ( this.menu_baies.menu_actif < 3 ) {
+                            play_F( 'sons/pch.mp3' );
+                            this.menu_baies.menu_actif++;
+                        } else {
+                            /* Changement de page si possible */
+                            if ( this.menu_baies.page_suiv != null ) {
+                                play_F( 'sons/pch.mp3' );
+                                this.menu_baies.page_active++;
+                                this.getBaies();
+                                this.menu_baies.menu_actif = 0;
                             } else {
                                 play_F( 'sons/probleme.mp3' );
                             }
