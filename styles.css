@@ -36,7 +36,6 @@ body {
     */
     background-image: url("https://d.furaffinity.net/art/blazingifrit/1475361156/1475361156.blazingifrit_zoruaeevee_background.jpg");
     background-size: cover;
-
 }
 
 /* SCENE */
@@ -394,6 +393,9 @@ body {
     background-color: #51ae5f;
     border-radius: 5px;
 }
+.ecran-principal, .ecran-principal > div {
+    height: 100%;
+}
 .ecran, .petit-ecran, .ecran-vert {
     /* Couleur d'écriture sur les écrans */
     color: white;
@@ -403,12 +405,21 @@ body {
     margin-left: 7px;
     margin-right: 7px;
 }
-/* Permet de mettre en blanc les svg de tuto de touches de l'écran secondaire */
 .ecran-secondaire img {
     margin-left: 5px;
     height:15px;
     position:absolute;
+    /* Permet de mettre en blanc les svg */
     filter: brightness(0) invert(1);
+}
+.chargement > div {
+    animation: tourne 1s linear infinite;
+    height:30px;
+    width:30px;
+    /* Permet de mettre en blanc les svg */
+    filter: brightness(0) invert(1);
+    background-image: url("images/svg/load.svg");
+    background-size: cover;
 }
 
 /* Trucs dans les écrans */
@@ -531,7 +542,7 @@ body {
    --------- */
 @keyframes tourne {
 	0% {}
-	100% { -webkit-transform: rotateY( 360deg ); }
+	100% { -webkit-transform: rotateZ( 360deg ); }
 }
 @keyframes elargissement {
 	0% { width: 0% }

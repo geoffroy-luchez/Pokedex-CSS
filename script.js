@@ -63,6 +63,12 @@ var app = new Vue( {
             stats: null,
             types: null
         },
+        baie: {
+            nom: null
+        },
+        type: {
+            nom: null
+        },
         menu_baies: {
             baies: [],
             menu_actif: 0,
@@ -124,10 +130,12 @@ var app = new Vue( {
             /* Mettre l'écran en chargement en attendant de revevoir le retour de l'API */
             let save_etat = this.etat;
             this.etat = 'chargement';
+            let nom_type_courant = this.menu_types.types[ this.menu_types.menu_actif ].name;
             /* ( utilisation d'une fonction fléchée, sinon "this" ne pointe pas sur l'instance Vue mais sur la fonction annonyme ) */
-            getAPI( 'https://pokeapi.co/api/v2/pokemon?limit=4&offset=' + ( this.menu_types.page_active * 4 ) ).then( ( reponse ) => {
+            getAPI( 'https://pokeapi.co/api/v2/type/' + nom_type_courant ).then( ( reponse ) => {
                 let reponse_json = JSON.parse( reponse );
                 /* Récupération des valeurs */
+                this.type.nom = reponse_json.name;
                 /* Arrêter le chargement */
                 this.etat = save_etat;
             } );
@@ -185,10 +193,12 @@ var app = new Vue( {
             /* Mettre l'écran en chargement en attendant de revevoir le retour de l'API */
             let save_etat = this.etat;
             this.etat = 'chargement';
+            let nom_baie_courante = this.menu_baies.baies[ this.menu_baies.menu_actif ].name;
             /* ( utilisation d'une fonction fléchée, sinon "this" ne pointe pas sur l'instance Vue mais sur la fonction annonyme ) */
-            getAPI( 'https://pokeapi.co/api/v2/pokemon?limit=4&offset=' + ( this.menu_baies.page_active * 4 ) ).then( ( reponse ) => {
+            getAPI( 'https://pokeapi.co/api/v2/berry/' + nom_baie_courante ).then( ( reponse ) => {
                 let reponse_json = JSON.parse( reponse );
                 /* Récupération des valeurs */
+                this.baie.nom = reponse_json.name;
                 /* Arrêter le chargement */
                 this.etat = save_etat;
             } );
@@ -318,6 +328,20 @@ var app = new Vue( {
                         play_F( 'sons/bip.mp3' );
                     } else if ( this.etat == 'pokemon' ) {
                         play_F( 'sons/probleme.mp3' );
+
+                    } else if ( this.etat == 'types' ) {
+                        this.etat = 'type';
+                        this.getType();
+                        play_F( 'sons/bip.mp3' );
+                    } else if ( this.etat == 'type' ) {
+                        play_F( 'sons/probleme.mp3' );
+
+                    } else if ( this.etat == 'baies' ) {
+                        this.etat = 'baie';
+                        this.getBaie();
+                        play_F( 'sons/bip.mp3' );
+                    } else if ( this.etat == 'baie' ) {
+                        play_F( 'sons/probleme.mp3' );
                     }
 
                 } else if ( touche == 'retour' ) {
@@ -330,6 +354,12 @@ var app = new Vue( {
                         play_F( 'sons/bip.mp3' );
                     } else if ( this.etat == 'pokemon' ) {
                         this.etat = 'pokemons';
+                        play_F( 'sons/bip.mp3' );
+                    } else if ( this.etat == 'type' ) {
+                        this.etat = 'types';
+                        play_F( 'sons/bip.mp3' );
+                    } else if ( this.etat == 'baie' ) {
+                        this.etat = 'baies';
                         play_F( 'sons/bip.mp3' );
                     }
 

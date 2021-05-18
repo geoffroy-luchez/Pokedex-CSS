@@ -93,7 +93,7 @@
                                 </div>
                                 <!-- Type -->
                                 <div v-else-if="etat === 'type'" class="flex-center">
-
+                                    {{ type.nom }}
                                 </div>
 
                                 <!-- Favoris -->
@@ -107,7 +107,7 @@
                                 </div>
                                 <!-- Favori -->
                                 <div v-else-if="etat === 'favori'" class="flex-center">
-
+                                    {{ favori.nom }}
                                 </div>
 
                                 <!-- Baies -->
@@ -121,17 +121,12 @@
                                 </div>
                                 <!-- Type -->
                                 <div v-else-if="etat === 'baie'" class="flex-center">
-
+                                    {{ baie.nom }}
                                 </div>
 
                                 <!-- Chargement -->
-                                <div v-else-if="etat === 'chargement'">
-                                    <div class='flex-center menu-principal__titre'>
-                                        <p>Pokémons</p>
-                                    </div>
-                                    <div class="menu-principal__conteneur">
-                                        Chargement...
-                                    </div>
+                                <div v-else-if="etat === 'chargement'" class='flex-center chargement'>
+                                    <div></div>
                                 </div>
 
                             </div>
