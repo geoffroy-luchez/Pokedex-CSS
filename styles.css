@@ -31,11 +31,8 @@ body {
     user-select: none;
     font-family: verdana;
     font-size: 12px;
-    /*
-    background: var( --couleur-fond );
-    */
-    background-image: url("https://d.furaffinity.net/art/blazingifrit/1475361156/1475361156.blazingifrit_zoruaeevee_background.jpg");
-    background-size: cover;
+    background: url("https://d.furaffinity.net/art/blazingifrit/1475361156/1475361156.blazingifrit_zoruaeevee_background.jpg") no-repeat center center fixed;
+    background-size:cover;
 }
 
 /* SCENE */
@@ -71,15 +68,13 @@ body {
     transition: 4s;
     /* Center du truc 3D (autour duquel la rotation se fait) */
     transform-origin: 140px 0px 0px;
-    /* Annimation Rotation */
-    /*animation: tourne 15s linear infinite;*/
 }
 /* Arrière de la partie principale */
 .partie-principale__face { position: absolute; transition: all 4s ease-out; }
 .partie-principale__face--front  { transform: rotateY(  0deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width: 280px;height: 470px;}
 .partie-principale__face--right  { transform: rotateY( 90deg) translateZ(267.5px); background-color: var( --couleur-secondaire );width:  25px;height: 470px;}
 .partie-principale__face--back   { transform: rotateY(180deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width: 280px;height: 470px;
-    box-shadow: -60px 20px 40px grey;
+    /*box-shadow: -60px 20px 40px grey;*/
 }
 .partie-principale__face--left   { transform: rotateY(-90deg) translateZ( 12.5px); background-color: var( --couleur-secondaire );width:  25px;height: 470px;}
 .partie-principale__face--bottom { transform: rotateX(-90deg) translateZ(457.5px); background-color: var( --couleur-secondaire );width: 280px;height: 25px;}
@@ -552,6 +547,11 @@ body {
 	0% { -webkit-line-clamp: 1; }
 	100% { -webkit-line-clamp: 4; }
 }
+@keyframes apparition {
+    0% { opacity:0; }
+	100% { opacity:1; }
+}
+
 
 /* ----------------------------------------------
    Ouverture du Pokédex (avec la classe "ouvert")
@@ -654,4 +654,67 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: row;
+}
+
+/* -----
+   Popup
+   ----- */
+.popup {
+    position: absolute;
+    left:0; top: 0;
+    z-index: 1;
+    height: 100%; width: 100%;
+    background: rgba(0,0,0,0.5);
+}
+.popup > .box {
+    position: absolute;
+     width: 400px;
+    background-color: white;
+    border-radius: 15px;
+
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows:10% 90%;
+}
+.popup > .box > .box-header {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    grid-template-rows:100%;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 10;
+}
+.popup > .box > .box-content {
+    padding: 20px;
+}
+.popup > .box > .box-content * {
+    text-decoration: none;
+    color: black;
+}
+.popup > .box > .box-header img {
+    height: 25px;
+}
+.popup > .box > .box-content img {
+    height: 25px;
+    margin-right: 5px;
+}
+.popup > .box > .box-header img:hover {
+    height: 30px;
+}
+.popup > .box > .box-content div {
+    display: flex;
+    align-items: center;
+}
+.popup > .box > .box-content .etiquette {
+    font-size: 8px;
+    background-color: lightgrey;
+    margin-left: 5px;
+    padding: 3px;
+    border-radius: 3px;
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
 }
