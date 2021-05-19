@@ -450,6 +450,7 @@ body {
     background-color: red;
     height: 20px;
     width: 100%;
+    white-space: nowrap;
 }
 .menu-principal__ligne div {
     margin-left: 5px;
